@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+ .neu-btn {
+
+	 border-radius: 20px;
+	 border: none;
+	 /* box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.25), -8px -8px 12px rgba(255, 255, 255, 0.3); */
+	 cursor: pointer;
+}
+ .neu-btn:hover {
+	 box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.25) inset, -8px -8px 12px rgba(255, 255, 255, 0.3) inset;
+}
+ 

@@ -1,0 +1,16 @@
+/* a {
+    color: #FFF;
+  }
+  a:hover {
+     color: black
+  } */
+  a{
+     color:black;
+  }
+  a:hover{
+     color:black;
+  }
+  a.active {
+   color: black;
+ }
+ 

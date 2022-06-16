@@ -1,0 +1,28 @@
+.banner-top-promo {
+  box-sizing: border-box;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.banner-top-promo strong {
+  color: #e67755;
+  text-shadow: 1px 1px 1px #000;
+}
+.flash {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-name: flash;
+}
+@keyframes flash {
+  0%, 50%, 100% {
+    background-color: #1b3147;
+ }
+  25%, 75% {
+    background-color: #364554;
+ }
+}
