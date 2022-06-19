@@ -23,7 +23,7 @@ CardComponent.propTypes = {
 export default function CardComponent({ data }) {
   return (
     <Box sx={{ minWidth: 275 }}>
-      <CardActionArea component={NavLink} to={`/exams/${data.slug}`}>
+      <CardActionArea component={NavLink} to={ data.course ==1 ? `/exams/${data.slug}/${data.course_purchase}` : `/exams/${data.slug}` }>
         <Card
           variant="outlined"
           style={{

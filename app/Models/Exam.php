@@ -11,6 +11,11 @@ class Exam extends Model
     protected $guarded = [];
 
 
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
     public static function boot()
 {
     parent::boot();

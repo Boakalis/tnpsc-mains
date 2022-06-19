@@ -21,7 +21,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('get-schedule/{id}', [CourseApiController::class, 'getSchedule'])->name('schedule');
     Route::post('submit-question', [CourseApiController::class, 'submitQuestion'])->name('submit');
     Route::get('profile', [UserApiController::class, 'profile'])->name('profile');
+    Route::post('profile-update', [UserApiController::class, 'profileUpdate'])->name('profileUpdate');
     Route::get('get-answer/{id}', [CourseApiController::class, 'getAnswer'])->name('getAnswer');
+    Route::get('get-courses', [UserApiController::class, 'getCourse'])->name('getCourse');
+    Route::get('get-reports', [UserApiController::class, 'getReports'])->name('getReports');
     Route::post('/change-password', [UserApiController::class, 'changePassword'])->name('changePassword');
     Route::post('/payment-status', [UserApiController::class, 'paymentStatus'])->name('paymentStatus');
     Route::post('/payment-success', [UserApiController::class, 'paymentSuccess'])->name('paymentSuccess');

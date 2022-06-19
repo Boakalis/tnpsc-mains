@@ -5,6 +5,7 @@ import {useSelector ,useDispatch} from 'react-redux';
 
 const Sidebar = () => {
   const user= useSelector(state=>state.authentication.user)
+  const dispatch = useDispatch();
   return (
     <>
       <aside
@@ -152,7 +153,7 @@ const Sidebar = () => {
             >
               <i className="menu-icon tf-icons bx bxs-category" />
               <div data-i18n="dashboard">Dashboard
-              {user ? 'YES' : 'NO'}
+             
               </div>
             </NavLink>
           </li>
@@ -181,65 +182,97 @@ const Sidebar = () => {
             </a>
           </li>
           <li className="menu-item ">
-            <NavLink
-              to="/profile"
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      background: "#000000",
-                      color: "white",
-                      backgroundImage:
-                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                    }
-                  : { color: "white" }
-              }
-              className=" text-uppercase menu-link"
-            >
-              
-              <i className="menu-icon tf-icons bx bx-user" />
-              <div data-i18n="exam">My Profile</div>
-            </NavLink>
+            {user != null ? (
+              <NavLink
+                to="/profile"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        background: "#000000",
+                        color: "white",
+                        backgroundImage:
+                          "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                      }
+                    : { color: "white" }
+                }
+                className=" text-uppercase menu-link"
+              >
+                <i className="menu-icon tf-icons bx bx-user" />
+                <div data-i18n="exam">My Profile</div>
+              </NavLink>
+            ) : (
+              <a
+                href="javascript:void(0)"
+                onClick={()=>{dispatch({type:'OPEN_LOGIN_MODAL'})}}
+                style={{color: "white"}}
+                className=" text-uppercase menu-link"
+              >
+                <i className="menu-icon tf-icons bx bx-user" />
+                <div data-i18n="exam">My Profile</div>
+              </a>
+            )}
           </li>
           <li className="menu-item ">
-            {}
-            <NavLink
-              to="/courses"
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      background: "#000000",
-                      color: "white",
-                      backgroundImage:
-                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                    }
-                  : { color: "white" }
-              }
-              className=" text-uppercase menu-link"
-            >
-              
-              <i className="menu-icon tf-icons bx bxs-book" />
-              <div data-i18n="exam">My Courses</div>
-            </NavLink>
+            {user != null ? (
+              <NavLink
+                to="/my-courses"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        background: "#000000",
+                        color: "white",
+                        backgroundImage:
+                          "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                      }
+                    : { color: "white" }
+                }
+                className=" text-uppercase menu-link"
+              >
+                <i className="menu-icon tf-icons bx bx-user" />
+                <div data-i18n="exam">My Courses</div>
+              </NavLink>
+            ) : (
+              <a
+                href="javascript:void(0)"
+                onClick={()=>{dispatch({type:'OPEN_LOGIN_MODAL'})}}
+                style={{color: "white"}}
+                className=" text-uppercase menu-link"
+              >
+                <i className="menu-icon tf-icons bx bx-user" />
+                <div data-i18n="exam">My Courses</div>
+              </a> 
+            )}
           </li>
           <li className="menu-item ">
-            <NavLink
-              to="/courses"
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      background: "#000000",
-                      color: "white",
-                      backgroundImage:
-                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                    }
-                  : { color: "white" }
-              }
-              className=" text-uppercase menu-link"
-            >
-              
-              <i className="menu-icon tf-icons bx bxs-report" />
-              <div data-i18n="exam">Evaluation Report</div>
-            </NavLink>
+            {user != null ? (
+              <NavLink
+                to="/my-reports"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        background: "#000000",
+                        color: "white",
+                        backgroundImage:
+                          "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                      }
+                    : { color: "white" }
+                }
+                className=" text-uppercase menu-link"
+              >
+                <i className="menu-icon tf-icons bx bx-user" />
+                <div data-i18n="exam">Evaluation Report</div>
+              </NavLink>
+            ) : (
+              <a
+                href="javascript:void(0)"
+                onClick={()=>{dispatch({type:'OPEN_LOGIN_MODAL'})}}
+                style={{color: "white"}}
+                className=" text-uppercase menu-link"
+              >
+                <i className="menu-icon tf-icons bx bx-user" />
+                <div data-i18n="exam">Evaluation Report</div>
+              </a>
+            )}
           </li>
           {/* <li class="menu-item ">
             <a href="javascript:void(0)" className=" text-uppercase menu-link">

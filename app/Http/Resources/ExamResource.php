@@ -18,6 +18,8 @@ class ExamResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'course' => $this->course_purchase,
+            'course_purchase' => $this->course_purchased_url,
             'slug' => $this->slug
         ];
     }

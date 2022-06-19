@@ -21,7 +21,31 @@ class CourseApiController extends Controller
 {
     public function getExams()
     {
-        return ExamResource::collection(Exam::where('status', 1)->get());
+        if (auth('api')->user() != null ) {
+            $purchaseCourse = Order::where([['user_id',auth('api')->user()->id],['status',1]])->pluck('course_id')->toArray();
+            $exams = Course::whereIn('id',$purchaseCourse)->pluck('exam_id')->unique()->toArray();
+            $datas = Exam::where('status', 1)->get();
+            foreach ($datas as $key => $value) {
+                if (in_array($value->id,$exams)) {
+                    $value['course_purchase'] = 1;
+                }else{
+                    $value['course_purchase'] = 0;
+                }
+                foreach($value->courses as $course){
+                    if (in_array($course->id , $purchaseCourse)) {
+                        $value['course_purchased_url'] = $course->name;
+                    }
+                }         
+            }
+
+        }else{
+            $datas = Exam::where('status', 1)->get();
+            foreach ($datas as $key => $value) {
+                    $value['course_purchase'] = 0;
+            }
+
+        }
+        return ExamResource::collection($datas);
     }
 
     public function getCourse($package, $course)
@@ -100,6 +124,7 @@ class CourseApiController extends Controller
 
     public function getAnswer($id)
     {
+        
         $test = SubmittedTest::where([['user_id',auth('api')->user()->id],['test_id',$id]])->orderBy('id','DESC')->first();
 
         if ($test == null) {

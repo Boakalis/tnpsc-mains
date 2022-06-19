@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ExamResource;
 use App\Models\Course;
+use App\Models\Exam;
 use App\Models\Notification;
 use App\Models\Order;
+use App\Models\SubmittedTest;
 use App\Models\Test;
 use App\Models\User;
 use Carbon\Carbon;
@@ -65,6 +68,51 @@ class UserApiController extends Controller
     {
         $user = User::where('id', auth('api')->user()->id)->first();
         return response(['user' => $user, 'message' => 'SUCCESS'], 200);
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'name' => 'required|min:3|max:244',
+                'phone' => 'required|digits_between:6,15|integer',
+                'address_1' => 'required|min:3',
+                'address_2' => 'nullable',
+                'state' => 'required',
+                'city' => 'required',
+                'landmark' => 'nullable',
+                'pincode' => 'required|integer|digits_between:6,7',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => 'VALIDATION_ERROR',
+                    'message' => $validator->errors(),
+                ])->setStatusCode(422);
+            }
+
+            User::where('id', auth('api')->user()->id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address_1' => $request->address_1,
+                'address_2' => $request->address_2,
+                'city' => $request->city,
+                'state' => $request->state,
+                'landmark' => $request->landmark,
+                'pincode' => $request->pincode,
+            ]);
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'success'
+            ])->setStatusCode(200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => $th->getMessage(),
+            ])->setStatusCode(500);
+        }
     }
 
     public function logOut(Request $request)
@@ -198,6 +246,7 @@ class UserApiController extends Controller
                 'amount' => $razorpayOrder['amount'] / 100,
                 'course_id' => $course_id,
                 'payment_type' => 1,
+                'exam_id' => $courseData->exam_id,
             ]);
 
             return response()->json([
@@ -300,4 +349,28 @@ class UserApiController extends Controller
             ])->setStatusCode(500);
         }
     }
+
+    public function getCourse()
+    {
+        $purchaseCourse = Order::where([['user_id', auth('api')->user()->id], ['status', 1]])->pluck('course_id')->toArray();
+        $purchaseExam = Order::where([['user_id', auth('api')->user()->id], ['status', 1]])->pluck('exam_id')->toArray();
+
+        $datas = Exam::whereIn('id', $purchaseExam)->get();
+        foreach ($datas as $key => $value) {
+            foreach($value->courses as $course){
+                if (in_array($course->id , $purchaseCourse)) {
+                    $value['course_purchased_url'] = $course->name;
+                }
+            }    
+            $value['course_purchase'] = 1;        
+        }
+
+        return ExamResource::collection($datas);
+    }
+
+    public function getReports()
+    {
+        return SubmittedTest::where('user_id',auth('api')->user()->id)->with('test','test.course.exam')->paginate(6);
+    }
+
 }

@@ -54,6 +54,8 @@
         ]
     },
     "dependencies": {
-        "autoprefixer": "10.4.5"
+        "autoprefixer": "10.4.5",
+        "react-js-pagination": "^3.0.3",
+        "react-laravel-paginex": "^2.0.8"
     }
 }
