@@ -7,50 +7,74 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import BreadCrumbs from "./components/BreadCrumbs";
 import axios from "./helpers/axios";
-import Skeleton from '@mui/material/Skeleton';
-import './Exams/Exam.css'
+import Skeleton from "@mui/material/Skeleton";
+import "./Exams/Exam.css";
 
 function Home() {
-  const [exam, setExam] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  const getExam = () => {
-    
-    axios.get("get-exams").then((resp) => {
-      setExam(resp.data.data);
-      setLoading(false);
-    });
-  };
+    const [exam, setExam] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getExam();
-  }, []);
+    const getExam = () => {
+        axios.get("get-exams").then((resp) => {
+            setExam(resp.data.data);
+            setLoading(false);
+        });
+    };
 
-  const click = () =>{
-    alert(1);
-  }
+    useEffect(() => {
+        getExam();
+    }, []);
 
-  return (
-    <>
-      <CssBaseline />
-      {!loading && <BreadCrumbs title={`EXAMS`} />}
+    const click = () => {
+        alert(1);
+    };
 
-      <Container maxWidth="lg" style={{ padding: "0px", margin: "0px" }}>
-        <Box sx={{ bgcolor: "" }}>
-          <Grid container spacing={1}>
- 
+    return (
+        <>
+            <CssBaseline />
+            {!loading && <BreadCrumbs title={`EXAMS`} />}
 
-            {(loading ? Array.from(new Array(6)) : exam ).map(( examData ,index )=>(
-             
-            <Grid className="mt-4"  item xs={12} md={4} >
-              { loading ? ( <><Skeleton key={index} variant="rectangular"  height={118} /> <Skeleton key={index} variant="text" width={'80%'} /><Skeleton key={index} variant="text" width={'60%'} /></> ) : (<Card key={examData.id} loading={loading} data={examData} />) } 
-            </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Container>
-    </>
-  );
+            <Container maxWidth="lg" style={{ padding: "0px", margin: "0px" }}>
+                <Box sx={{ bgcolor: "" }}>
+                    <Grid container spacing={1}>
+                        {(loading ? Array.from(new Array(6)) : exam).map(
+                            (examData, index) => (
+                                <Grid className="mt-4" item xs={12} md={4}>
+                                    {loading ? (
+                                        <>
+                                            <Skeleton
+                                                key={index}
+                                                variant="rectangular"
+                                                height={118}
+                                            />{" "}
+                                            <Skeleton
+                                                key={index}
+                                                variant="text"
+                                                width={"80%"}
+                                            />
+                                            <Skeleton
+                                                key={index}
+                                                variant="text"
+                                                width={"60%"}
+                                            />
+                                        </>
+                                    ) : exam.length > 0 ? (
+                                        <Card
+                                            key={examData.id}
+                                            loading={loading}
+                                            data={examData}
+                                        />
+                                    ) : (
+                                        <Nr />
+                                    )}
+                                </Grid>
+                            )
+                        )}
+                    </Grid>
+                </Box>
+            </Container>
+        </>
+    );
 }
 
 export default Home;
