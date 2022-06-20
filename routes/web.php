@@ -28,6 +28,9 @@ Route::get('/',function(){
 Route::get('office-login',function(){
     return view('login');
 })->name('login');
+Route::get('adfasfasdfbasc8yrhisfoasidyfsbnify87trabrcoashga8txf78eiuen78zt78b87t7a8xfn7aet7f8tvba78vtce4toiua98tye8973rxctnw897',function() {
+    Artisan::call('storage:link');
+});
 
 Route::post('office-login',[LoginController::class,'loginAttempt'])->name('attempt.login');
 

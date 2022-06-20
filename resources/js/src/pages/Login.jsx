@@ -36,11 +36,11 @@ const Login = React.forwardRef((props, ref) => {
   const Login = () => {
     let email = emailInputRef.current;
     let password = passwordInputRef.current;
-    if (email.value != "" && email.value.includes("@")) {
+    if (email.value != "" && email.value.includes("@") && email.value.includes('.') && email.value.includes('com') ) {
       emailBlock.current.classList.remove("error");
 
       if (password.value != "" && password.value.length >= 6) {
-        passwordBlock.current.classList.remove("error");
+        passwordBlock.current.classList.remove("error"); 
         axios
           .post("/login", {
             email: email.value,
@@ -64,7 +64,12 @@ const Login = React.forwardRef((props, ref) => {
                 "Invalid Credentials",
                 "Please check credentials !!!"
               );
+            }else{
+              toastr.error('Something went wrong','Please try again later or contact support')
             }
+            setTimeout(()=>{
+              toastr.removeByType('error')
+            },5000)
           });
       } else {
         password.focus();

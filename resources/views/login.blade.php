@@ -231,7 +231,7 @@
                 toastr.error('Invalid Credentials');
             @endif
             @if(Session::has('no-permission'))
-                toastr.info('Only For Vendors');
+                toastr.info('Only For Staffs');
             @endif
             @if(Session::has('no-user'))
                 toastr.info('User Not Found');
