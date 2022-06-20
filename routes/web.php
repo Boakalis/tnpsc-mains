@@ -25,6 +25,12 @@ Auth::routes();
 Route::get('/',function(){
     return view('home');
 })->name('home');
+Route::get('/privacy-policy',function(){
+    return view('privacy-policy');
+})->name('home');
+Route::get('/terms-and-condition',function(){
+    return view('home');
+})->name('home');
 Route::get('office-login',function(){
     return view('login');
 })->name('login');

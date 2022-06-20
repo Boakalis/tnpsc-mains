@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -54,9 +54,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Login</a>
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="index.html" class="nav-item nav-link active">Courses</a>
+                        <a href="index.html" class="nav-item nav-link active">About Us</a>
+                        <a href="index.html" class="nav-item nav-link active">Contact Us</a>
                     </div>
-                    <a href="" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Register</a>
+                    {{-- <a href="" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Register</a> --}}
                 </div>
             </nav>
 
@@ -459,7 +462,7 @@
             </div>
         </div>
         <!-- Team End -->
-        
+
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer  wow fadeIn" data-wow-delay="0.1s" >
@@ -507,8 +510,8 @@
             <div class="copyright py-3">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">TNPSC MAINS</a>, All Right Reserved. 
-                        
+                        &copy; <a class="border-bottom" href="#">TNPSC MAINS</a>, All Right Reserved.
+
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         {{-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> --}}
                         {{-- <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a> --}}
