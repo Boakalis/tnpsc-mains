@@ -50,5 +50,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('evaluators',Evaluator::class)->name('evaluator');
 });
 
-Route::view('/{path?}', 'app')->where('path', '([A-z\d\-\/_.]+)?');
 
+// Route::view('/{path?}', 'app')->where('path', '([A-z\d\-\/_.]+)?');
+Route::view('/{path?}', 'app')->where('path', '.+');
