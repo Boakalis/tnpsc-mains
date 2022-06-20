@@ -8,6 +8,7 @@ use App\Models\Test;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Str;
 
 class Course extends Component
 {
@@ -114,7 +115,6 @@ class Course extends Component
         'description' => 'required',
         'type' => 'required|integer',
         'examId' => 'required|integer',
-        'days' => 'required',
         'status' => 'required',
         'price' => 'required|integer',
     ];
@@ -182,25 +182,28 @@ class Course extends Component
     {
         $formated_description = str_replace('<li>', '-', str_replace('</li>', '', str_replace('</ul>', '', str_replace('<ul>', '', $this->description))));
         $final = json_encode(array_filter(explode('-', $formated_description)));
-
-
         $this->validate();
-
         if ($this->courseEditId != null) {
             if ($this->days != null) {
                 $fileName =   $this->days->store('files', 'public');
+                $datas['days'] = $fileName;
             }
-            ModelsCourse::where('id', $this->courseEditId)->update([
+            $datas = [
                 'name' => $this->name,
                 'benefits' => $this->description,
                 'type' => $this->type,
                 'exam_id' => $this->examId,
                 'price' => $this->price,
-                'days' => $fileName,
+
                 'formated' => $final,
                 'status' => $this->status,
-            ]);
+                'slug' => Str::slug($this->name),
+            ];
+            ModelsCourse::where('id', $this->courseEditId)->update($datas);
         } else {
+            $validatedData = $this->validate([
+                'days' => 'required',
+            ]);
             if ($this->copyCourseId == 0) {
                 if ($this->days != null) {
                     $fileName =   $this->days->store('files', 'public');
@@ -214,6 +217,7 @@ class Course extends Component
                     'formated' => $final,
                     'days' => $fileName,
                     'status' => $this->status,
+                    'slug' => Str::slug($this->name),
                 ]);
             } else {
                 if ($this->days != null) {
@@ -227,6 +231,7 @@ class Course extends Component
                     'price' => $this->price,
                     'days' => $fileName,
                     'status' => $this->status,
+                    'slug' => Str::slug($this->name),
                 ]);
 
                 foreach (Test::where('course_id', $this->copyCourseId)->select('name', 'limit', 'file', 'videolink', 'is_video', 'type', 'course_id', 'status')->get() as $key => $value) {
@@ -242,11 +247,12 @@ class Course extends Component
     public function editCourse($value)
     {
         $data = ModelsCourse::where('id', $value)->first();
+
         $this->name = $data->name;
         $this->description = $data->benefits;
         $this->type = $data->type;
         $this->examId = $data->exam_id;
-        $this->days = $data->days;
+        // $this->days = $data->days;
         $this->unlockTime = $data->unlock_time;
         $this->price = $data->price;
         $this->status = $data->status;

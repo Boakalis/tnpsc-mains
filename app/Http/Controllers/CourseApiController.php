@@ -35,7 +35,7 @@ class CourseApiController extends Controller
                     if (in_array($course->id , $purchaseCourse)) {
                         $value['course_purchased_url'] = $course->name;
                     }
-                }         
+                }
             }
 
         }else{
@@ -52,7 +52,7 @@ class CourseApiController extends Controller
     {
         $str = trim($package);
         $examId = Exam::where('slug', $course)->pluck('id')->first();
-        $tests = Course::where('exam_id', $examId)->where('name', 'LIKE', "%{$str}%")->with(['formatedTest' => function ($query) {
+        $tests = Course::where('exam_id', $examId)->where('slug',$package)->with(['formatedTest' => function ($query) {
             $query->where('status', '!=', 0);
         }])->first();
         if (auth('api')->user() != null ) {
@@ -124,7 +124,7 @@ class CourseApiController extends Controller
 
     public function getAnswer($id)
     {
-        
+
         $test = SubmittedTest::where([['user_id',auth('api')->user()->id],['test_id',$id]])->orderBy('id','DESC')->first();
 
         if ($test == null) {
