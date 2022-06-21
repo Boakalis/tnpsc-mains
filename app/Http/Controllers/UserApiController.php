@@ -361,8 +361,8 @@ class UserApiController extends Controller
                 if (in_array($course->id , $purchaseCourse)) {
                     $value['course_purchased_url'] = $course->name;
                 }
-            }    
-            $value['course_purchase'] = 1;        
+            }
+            $value['course_purchase'] = 1;
         }
 
         return ExamResource::collection($datas);
