@@ -42,13 +42,13 @@ class UserApiController extends Controller
             if (User::where('email', $request->email)->exists()) {
                 $user = User::where('email', $request->email)->first();
                 if (Hash::check($request->password, $user->password)) {
-                    $token = $user->createToken('auth_token');
-                    User::where('email', $request->email)->update([
-                        'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
-                    ]);
+                    $token =$user->createToken('auth_token')->accessToken;
+                    // User::where('email', $request->email)->update([
+                    //     'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
+                    // ]);
                     $data = [
-                        'token' => $token->accessToken,
-                        'expiry_date' =>  Carbon::parse($token->token->expires_at)->format('Y-m-d H:i:s'),
+                        'token' => $token,
+                        // 'expiry_date' =>  Carbon::parse($token->token->expires_at)->format('Y-m-d H:i:s'),
                     ];
                     return response(['user' => $user, 'token' => $data, 'message' => 'SUCCESS'], 200);
                 } else {
