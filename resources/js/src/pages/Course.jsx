@@ -13,9 +13,9 @@ import './../Exams/Exam.css'
 function Course() {
   const [exam, setExam] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const getExam = () => {
-    
+
     axios.get("get-courses").then((resp) => {
       setExam(resp.data.data);
       setLoading(false);
@@ -35,9 +35,9 @@ function Course() {
       <Container maxWidth="lg" style={{ padding: "0px", margin: "0px" }}>
         <Box sx={{ bgcolor: "" }}>
           <Grid container spacing={1}>
-            {(loading ? Array.from(new Array(6)) : exam ).map(( examData ,index )=>(             
+            {(loading ? Array.from(new Array(6)) : exam ).map(( examData ,index )=>(
             <Grid className="mt-4"  item xs={12} md={4} >
-              { loading ? ( <><Skeleton key={index} variant="rectangular"  height={118} /> <Skeleton key={index} variant="text" width={'80%'} /><Skeleton key={index} variant="text" width={'60%'} /></> ) : (<Card key={examData.id} loading={loading} data={examData} />) } 
+              { loading ? ( <><Skeleton key={index} variant="rectangular"  height={118} /> <Skeleton key={index} variant="text" width={'80%'} /><Skeleton key={index} variant="text" width={'60%'} /></> ) : (<Card key={examData.id} loading={loading} data={examData} />) }
             </Grid>
             ))}
           </Grid>

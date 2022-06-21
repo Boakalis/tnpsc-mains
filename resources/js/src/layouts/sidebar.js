@@ -138,7 +138,7 @@ const Sidebar = () => {
           </li>
           <li className="menu-item  ">
             <NavLink
-              to="/dashboard"
+              to="/my-dashboard"
               style={({ isActive }) =>
                 isActive
                   ? {
@@ -153,7 +153,7 @@ const Sidebar = () => {
             >
               <i className="menu-icon tf-icons bx bxs-category" />
               <div data-i18n="dashboard">Dashboard
-             
+
               </div>
             </NavLink>
           </li>
@@ -240,7 +240,7 @@ const Sidebar = () => {
               >
                 <i className="menu-icon tf-icons bx bx-user" />
                 <div data-i18n="exam">My Courses</div>
-              </a> 
+              </a>
             )}
           </li>
           <li className="menu-item ">

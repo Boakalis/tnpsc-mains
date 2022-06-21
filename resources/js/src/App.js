@@ -11,6 +11,7 @@ import AuthMiddleware from "./helpers/AuthMiddleware";
 import Profile from "./pages/Profile";
 import Course from "./pages/Course";
 import Reports from "./pages/Reports";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     return (
@@ -21,7 +22,7 @@ function App() {
             element={
               <AuthMiddleware>
                 <Profile />
-              </AuthMiddleware> 
+              </AuthMiddleware>
             }
           />
           <Route
@@ -29,7 +30,15 @@ function App() {
             element={
               <AuthMiddleware>
                 <Course />
-              </AuthMiddleware> 
+              </AuthMiddleware>
+            }
+          />
+          <Route
+            path="/my-dashboard"
+            element={
+              <AuthMiddleware>
+                <Dashboard />
+              </AuthMiddleware>
             }
           />
           <Route
@@ -37,7 +46,7 @@ function App() {
             element={
               <AuthMiddleware>
                 <Reports />
-              </AuthMiddleware> 
+              </AuthMiddleware>
             }
           />
           <Route index path="/exams" element={<Home />} />
@@ -47,6 +56,6 @@ function App() {
       </Routes>
     );
   }
-  
+
 
 export default App;

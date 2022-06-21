@@ -230,6 +230,7 @@ class Course extends Component
                     'exam_id' => $this->examId,
                     'price' => $this->price,
                     'days' => $fileName,
+                    'formated' => $final,
                     'status' => $this->status,
                     'slug' => Str::slug($this->name),
                 ]);
