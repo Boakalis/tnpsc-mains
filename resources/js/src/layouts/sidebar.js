@@ -16,10 +16,10 @@ const Sidebar = () => {
         id="layout-menu"
         className="layout-menu menu-vertical menu bg-menu-theme"
       >
-        <div className="app-brand demo">
+        <div className="app-brand demo px-1">
           <a href="index.html" className="app-brand-link">
             <span className="app-brand-logo demo">
-              <svg
+              {/* <svg
                 width={25}
                 viewBox="0 0 25 42"
                 version="1.1"
@@ -92,10 +92,11 @@ const Sidebar = () => {
                     </g>
                   </g>
                 </g>
-              </svg>
+              </svg> */}
+              <img style={{height:'50px'}} src="/orange-book.png" />
             </span>
-            <span className="app-brand-text demo menu-text fw-bolder ms-2">
-              Sneat
+            <span style={{fontSize:"1.5rem"}} className="text-uppercase app-brand-text demo menu-text fw-bolder ms-2">
+              TNPSC MAINS
             </span>
           </a>
           <a

@@ -31,11 +31,17 @@ Route::middleware('auth:api')->group(function () {
     Route::post('log-out', [UserApiController::class, 'logOut'])->name('logOut');
     Route::post('orders', [UserApiController::class, 'orderInitiate'])->name('orderInitiate');
     Route::get('notifications', [UserApiController::class, 'notifications'])->name('notifications');
+    Route::get('analytics-data', [UserApiController::class, 'analytics'])->name('analytics');
+    Route::get('auth', [UserApiController::class, 'auth'])->name('auth');
 });
 
 
+Route::post('check-mail', [UserApiController::class, 'checkMail'])->name('checkMail');
+Route::post('check-otp', [UserApiController::class, 'checkOtp'])->name('checkOtp');
 Route::post('login', [UserApiController::class, 'login'])->name('login');
+Route::post('google-login', [UserApiController::class, 'googleLogin'])->name('google.login');
 Route::post('register', [UserApiController::class, 'register'])->name('register');
 Route::get('get-exams', [CourseApiController::class, 'getExams'])->name('get.exams');
 Route::get('get-plans/{slug}', [CourseApiController::class, 'getPlans'])->name('get.plans');
 Route::get('get-courses/{plan}/{slug}', [CourseApiController::class, 'getCourse'])->name('get.courses');
+Route::post('api-to-get-motivation-and-save-in-db', [UserApiController::class, 'motivationQuotes'])->name('motivationQuotes');

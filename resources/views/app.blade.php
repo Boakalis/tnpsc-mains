@@ -8,10 +8,10 @@
 
   <!-- <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" /> -->
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="icon" href="/orange-book.png" />
 
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="icon" type="image/x-icon" href="/frontend/assets/img/favicon/favicon.ico" />
+  <meta name="description" content="tnpsc-evaluation=platform" />
+  <link rel="icon" type="image/x-icon" href="/orange-book.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,7 +43,7 @@
   <script src="/frontend/assets/js/config.js"></script>
   {{-- <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"> --}}
 
-  <title>React App</title>
+  <title>TNPSC Mains | Online Practice and Evaluation Platform for TNPSC</title>
 </head>
 
 <body style="background:aliceblue;">
@@ -82,6 +82,19 @@
       $('#layout').removeClass('layout-menu-expanded')
     })
   </script>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/62b6a97b7b967b1179966d4b/1g6coc535';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 
 </html>

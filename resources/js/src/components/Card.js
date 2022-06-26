@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import { CardActionArea } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import slugify from "react-slugify";
 
 const bull = (
   <Box
@@ -21,9 +22,10 @@ CardComponent.propTypes = {
 };
 
 export default function CardComponent({ data }) {
+  {console.log(data)}
   return (
     <Box sx={{ minWidth: 275 }}>
-      <CardActionArea component={NavLink} to={ data.course ==1 ? `/exams/${data.slug}/${data.course_purchase}` : `/exams/${data.slug}` }>
+      <CardActionArea component={NavLink} to={ data.course ==1 ? `/exams/${data.slug}/${slugify(data.course_purchase)}` : `/exams/${data.slug}` }>
         <Card
           variant="outlined"
           style={{
@@ -32,7 +34,7 @@ export default function CardComponent({ data }) {
             borderRadius: "15px",
             width: "300px",
             height: "160px",
-          }}
+          }} 
         >
           <CardContent>
             <Typography variant="h5" component="div">

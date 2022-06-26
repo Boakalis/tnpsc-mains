@@ -200,9 +200,9 @@ function Content() {
 
     return (
         <>
-       
+
             {datas ? (
-                datas.weeks == "undefined" ? (
+                datas.weeks != "undefined" ? (
                     <>
                         {datas.purchased == false &&
                             createPortal(

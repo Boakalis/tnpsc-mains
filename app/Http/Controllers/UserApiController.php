@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Notification;
 use App\Models\Order;
+use App\Models\Quote;
 use App\Models\SubmittedTest;
 use App\Models\Test;
 use App\Models\User;
@@ -20,6 +21,7 @@ use Str;
 use Razorpay\Api\Api;
 use Log;
 use Razorpay\Api\Errors\SignatureVerificationError;
+use Illuminate\Support\Facades\Mail;
 
 class UserApiController extends Controller
 {
@@ -39,10 +41,17 @@ class UserApiController extends Controller
                 ]);
             }
 
+
+
             if (User::where('email', $request->email)->exists()) {
+
+
                 $user = User::where('email', $request->email)->first();
+                if ($user->password == null) {
+                    return response(['message' => 'GOOGLE_LOGIN'], 422);
+                }
                 if (Hash::check($request->password, $user->password)) {
-                    $token =$user->createToken('auth_token')->accessToken;
+                    $token = $user->createToken('auth_token')->accessToken;
                     // User::where('email', $request->email)->update([
                     //     'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
                     // ]);
@@ -64,6 +73,67 @@ class UserApiController extends Controller
         }
     }
 
+
+    public function googleLogin(Request $request)
+    {
+        try {
+            // $data = $request->all();
+            // return response(['data' => $d],422);
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'name' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => 'VALIDATION_ERROR',
+                    'message' => $validator->errors(),
+                ])->setStatusCode(422);
+            }
+
+            if (User::where('email', $request->email)->exists()) {
+                $user = User::where('email', $request->email)->first();
+                if ($user->password != null) {
+                    return response(['message' => 'NORMAL_LOGIN'], 422);
+                }
+                // if (Hash::check($request->password, $user->password)) {
+                $token = $user->createToken('auth_token')->accessToken;
+                // User::where('email', $request->email)->update([
+                //     'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
+                // ]);
+                $data = [
+                    'token' => $token,
+                    // 'expiry_date' =>  Carbon::parse($token->token->expires_at)->format('Y-m-d H:i:s'),
+                ];
+                return response(['user' => $user, 'token' => $data, 'message' => 'SUCCESS'], 200);
+                // } else {
+                //     return response(['message' => 'INVALID_CREDENTIALS'], 422);
+                // }
+            } else {
+                $user = User::create([
+                    'email' => $request->email,
+                    'name' => $request->name,
+                    'user_type' => 3,
+                    'status' => 1,
+                ]);
+
+                $token = $user->createToken('auth_token')->accessToken;
+                // User::where('email', $request->email)->update([
+                //     'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
+                // ]);
+                $data = [
+                    'token' => $token,
+                    // 'expiry_date' =>  Carbon::parse($token->token->expires_at)->format('Y-m-d H:i:s'),
+                ];
+                return response(['user' => $user, 'token' => $data, 'message' => 'SUCCESS'], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => $th->getMessage(),
+            ])->setStatusCode(500);
+        }
+    }
+
     public function profile()
     {
         $user = User::where('id', auth('api')->user()->id)->first();
@@ -73,8 +143,8 @@ class UserApiController extends Controller
     public function profileUpdate(Request $request)
     {
         try {
+            $id = auth('api')->user()->id;
             $validator = Validator::make($request->all(), [
-                'email' => 'required|email',
                 'name' => 'required|min:3|max:244',
                 'phone' => 'required|digits_between:6,15|integer',
                 'address_1' => 'required|min:3',
@@ -88,6 +158,17 @@ class UserApiController extends Controller
             if ($validator->fails()) {
                 return response()->json([
                     'error' => 'VALIDATION_ERROR',
+                    'message' => $validator->errors(),
+                ])->setStatusCode(422);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users,email,' . $id,
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => 'MAIL_ERROR',
                     'message' => $validator->errors(),
                 ])->setStatusCode(422);
             }
@@ -127,7 +208,7 @@ class UserApiController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'email' => 'required|email',
+                'email' => 'required|email|unique:users',
                 'name' => 'required|min:3|max:244',
                 'password' => 'required|min:6|max:244',
                 'confirmPassword' => 'required|same:password',
@@ -150,13 +231,15 @@ class UserApiController extends Controller
                     'status' => 1,
                     'user_type' => 3
                 ]);
-                $token = $user->createToken('auth_token');
-                User::where('email', $request->email)->update([
-                    'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
-                ]);
+                // $token = $user->createToken('auth_token');
+                $token = $user->createToken('auth_token')->accessToken;
+
+                // User::where('email', $request->email)->update([
+                //     'expiry_date' => Carbon::parse($token->token->expires_at)->format('Y-m-d'),
+                // ]);
                 $data = [
-                    'token' => $token->accessToken,
-                    'expiry_date' =>  Carbon::parse($token->token->expires_at)->format('Y-m-d H:i:s'),
+                    'token' => $token,
+                    // 'expiry_date' =>  Carbon::parse($token->token->expires_at)->format('Y-m-d H:i:s'),
                 ];
                 return response(['user' => $user, 'token' => $data, 'message' => 'SUCCESS'], 200);
             }
@@ -299,6 +382,10 @@ class UserApiController extends Controller
 
             try {
                 $api->utility->verifyPaymentSignature($attributes);
+                // $paymentData =$api->payment->fetch($$request->razorpayPaymentId);
+                // return response()->json([
+                //     'data' => $paymentData ,
+                // ])->setStatusCode(500);
                 Order::where('order_id', $request->orderCreationId)->update([
                     'status' => 1,
                     'razorpay_signature' => $request->razorpaySignature,
@@ -357,8 +444,8 @@ class UserApiController extends Controller
 
         $datas = Exam::whereIn('id', $purchaseExam)->get();
         foreach ($datas as $key => $value) {
-            foreach($value->courses as $course){
-                if (in_array($course->id , $purchaseCourse)) {
+            foreach ($value->courses as $course) {
+                if (in_array($course->id, $purchaseCourse)) {
                     $value['course_purchased_url'] = $course->name;
                 }
             }
@@ -370,7 +457,111 @@ class UserApiController extends Controller
 
     public function getReports()
     {
-        return SubmittedTest::where('user_id',auth('api')->user()->id)->with('test','test.course.exam')->paginate(6);
+        return SubmittedTest::where('user_id', auth('api')->user()->id)->with('test', 'test.course.exam')->paginate(6);
     }
 
+    public function analytics()
+    {
+        try {
+            $quotes = Quote::inRandomOrder()->first();
+            $purchaseCourse = Order::select('id', 'user_id', 'course_id', 'exam_id')->where([['user_id', auth('api')->user()->id], ['status', 1]])->with('exams', 'courses:id,slug,name', 'exams:id,slug,name')->get();
+            $evaluatedReports = SubmittedTest::where('user_id', auth('api')->user()->id)->with('test', 'test.course.exam')->get();
+            return response()->json([
+                'quote' => $quotes,
+                'purchase_data' => $purchaseCourse,
+                'evaluated_reports' => $evaluatedReports
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'data' => $th->getMessage(),
+            ])->setStatusCode(500);
+        }
+    }
+
+    public function motivationQuotes(Request $request)
+    {
+        try {
+            $datas = $request->toArray();
+            foreach ($datas as $data) {
+                Quote::create([
+                    'quote' => $data['quote'],
+                ]);
+            }
+            return response()->json([
+                'message' => 'success'
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'error',
+                'data' => $th->getMessage(),
+            ]);
+        }
+    }
+
+    public function checkMail(Request $request)
+    {
+        try {
+            if (User::where('email', $request->email)->exists()) {
+                $user = User::where('email', $request->email)->first();
+
+                if ($user->password == null) {
+                    return response()->json([
+                        'message' => 'GOOGLE_LOGIN'
+                    ])->setStatusCode(422);
+                }
+                $otp = rand(100000, 999999);
+                User::where('email', $request->email)->update([
+                    'otp' => $otp,
+                ]);
+                $details = [
+                    'otp' => $otp,
+                ];
+                // \Mail::to($request->email)->send(new \App\Mail\PasswordRecoveryMail($details));
+
+                return response()->json([
+                    'message' => 'success',
+                ])->setStatusCode(200);
+            } else {
+                return response()->json([
+                    'message' => 'NO_USER',
+                ])->setStatusCode(422);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    public function checkOtp(Request $request)
+    {
+        try {
+            if (User::where('email', $request->email)->exists()) {
+
+                $user = User::where('email', $request->email)->first();
+
+
+
+                if ($user->otp == $request->otp) {
+                    User::where('email',$request->email)->update([
+                        'password' => bcrypt($request->password),
+                    ]);
+                    return response()->json([
+                        'message' => 'PASSWORD_CHANGED'
+                    ])->setStatusCode(200);
+                } else {
+                    return response()->json([
+                        'message' => 'OTP_ERROR'
+                    ])->setStatusCode(422);
+                }
+            } else {
+                return response()->json([
+                    'message' => 'MAIL_ERROR'
+                ])->setStatusCode(422);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'SERVER_ERROR',
+                'data' => $th->getMessage(),
+            ])->setStatusCode(500);
+        }
+    }
 }

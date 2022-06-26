@@ -30,95 +30,101 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Notification from "../components/Notification";
 
 const NavBar = () => {
-  const modalState = useSelector((state) => state.modalReducer.isOpen);
-  const paymentLoader = useSelector(
-    (state) => state.modalReducer.paymentLoader
-  );
-  const dispatch = useDispatch();
+    const modalState = useSelector((state) => state.modalReducer.isOpen);
+    const paymentLoader = useSelector(
+        (state) => state.modalReducer.paymentLoader
+    );
+    const dispatch = useDispatch();
 
-  const auth = useSelector((state) => state.authentication.user);
+    const auth = useSelector((state) => state.authentication.user);
 
-  const loginModal = () => {
-    dispatch({ type: "OPEN_LOGIN_MODAL" });
-  };
+    const loginModal = () => {
+        dispatch({ type: "OPEN_LOGIN_MODAL" });
+    };
 
-  const registerModal = () => {
-    dispatch({ type: "OPEN_REGISTER_MODAL" });
-  };
+    const registerModal = () => {
+        dispatch({ type: "OPEN_REGISTER_MODAL" });
+    };
 
-  const getProfile = () => {};
-  const changePassword = () => {};
-  const logOut = () => {
-    axios.post("/log-out").then((resp) => {
-      window.location.reload();
-    });
-  };
+    const getProfile = () => {};
+    const changePassword = () => {};
+    const logOut = () => {
+        axios.post("/log-out").then((resp) => {
+            window.location.reload();
+        });
+    };
 
-  // const settings = [
-  //   {
-  //     title: "Profile",
-  //     function: {getProfile},
-  //   },
-  //   {
-  //     title: "Change Password",
-  //     function: {changePassword},
-  //   },
-  //   {
-  //     title: "Logout",
-  //     function: {logOut},
-  //   },
-  // ];
+    // const settings = [
+    //   {
+    //     title: "Profile",
+    //     function: {getProfile},
+    //   },
+    //   {
+    //     title: "Change Password",
+    //     function: {changePassword},
+    //   },
+    //   {
+    //     title: "Logout",
+    //     function: {logOut},
+    //   },
+    // ];
 
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    document.getElementById("layout").classList.add("layout-menu-expanded");
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    const handleOpenNavMenu = (event) => {
+        document.getElementById("layout").classList.add("layout-menu-expanded");
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
 
-  const handleCloseNavMenu = () => {
-    document.getElementById("layout").classList.remove("layout-menu-expanded");
-  };
+    const handleCloseNavMenu = () => {
+        document
+            .getElementById("layout")
+            .classList.remove("layout-menu-expanded");
+    };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
 
-  return (
-    <>
-      <div id="price-root"></div>
-      <AppBar position="static" style={{ backgroundColor: "white" }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box spacing={2} sx={{ display: { xs: "flex", md: "flex" } }} style={{display:'flex',alignItems:'center'}} >
-              {!auth ? (
-                <>
-                  {" "}
-                  <Button
-                    color="primary"
-                    onClick={loginModal}
-                    variant="contained"
-                    className="mx-1 neu-btn"
-                  >
-                    Login
-                  </Button>{" "}
-                  <Button
-                    color="success"
-                    onClick={registerModal}
-                    variant="contained"
-                    className="mx-1 neu-btn"
-                  >
-                    Register
-                  </Button>
-                </>
-              ) : (
-                <>
-                  {" "}
-                  {/* <IconButton
+    return (
+        <>
+            <div id="price-root"></div>
+            <AppBar position="static" style={{ backgroundColor: "white" }}>
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <Box sx={{ flexGrow: 1 }} />
+                        <Box
+                            spacing={2}
+                            sx={{ display: { xs: "flex", md: "flex" } }}
+                            style={{ display: "flex", alignItems: "center" }}
+                        >
+                            {!auth ? (
+                                <>
+                                    {" "}
+                                    <Button
+                                        color="primary"
+                                        onClick={loginModal}
+                                        variant="contained"
+                                        className="mx-1 neu-btn"
+                                    >
+                                        Login
+                                    </Button>{" "}
+                                    <Button
+                                        color="success"
+                                        onClick={registerModal}
+                                        variant="contained"
+                                        className="mx-1 neu-btn"
+                                    >
+                                        Register
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    {" "}
+                                    {/* <IconButton
                     size="small"
                     aria-label="show 4 new mails"
                     color="inherit"
@@ -137,8 +143,8 @@ const NavBar = () => {
                       <NotificationsOutlinedIcon color="action" />
                     </Badge>
                   </IconButton> */}
-                  <Notification></Notification>
-                  {/* <span
+                                    <Notification></Notification>
+                                    {/* <span
                     className="mx-3 text-center"
                     style={{ color: "black" ,display:"flex",alignItems:"center" }}
                     textAlign="center"
@@ -147,57 +153,81 @@ const NavBar = () => {
                       {" "}
                       {auth.name}
                     </p>
-                   
+
                   </span> */}
-                  <Tooltip title="Profile Settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar
-                        alt={auth.name}
-                        src="/static/images/avatar/2.jpg"
-                      />
-                    </IconButton>
-                  </Tooltip>
-                  <Menu
-                    sx={{ mt: "45px" }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography
-                        textAlign="center"
-                        onClick={() =>
-                          dispatch({ type: "OPEN_CHANGE_PASSWORD_MODAL" })
-                        }
-                      >
-                        Change Password
-                      </Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={logOut}>
-                        Logout
-                      </Typography>
-                    </MenuItem>
-                  </Menu>{" "}
-                </>
-              )}
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-      {paymentLoader ? <LinearProgress position="fixed" /> : ""}
-    </>
-  );
+                                    <Tooltip title="Profile Settings">
+                                        <IconButton
+                                            className="mx-2"
+                                            onClick={handleOpenUserMenu}
+                                            sx={{ p: 0 }}
+                                        >
+                                            <i
+                                                style={{ fontSize: "0.8em" }}
+                                                className="fa-solid fa-user"
+                                            ></i>
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Profile Settings">
+                                        <p
+                                            onClick={handleOpenUserMenu}
+                                            className="my-0 py-0  text-uppercase"
+                                            style={{
+                                                fontSize: "16px",
+                                                color: "black",
+                                            }}
+                                        >
+                                            {" "}
+                                            {auth.name}
+                                        </p>
+                                    </Tooltip>
+                                    <Menu
+                                        sx={{ mt: "45px" }}
+                                        id="menu-appbar"
+                                        anchorEl={anchorElUser}
+                                        anchorOrigin={{
+                                            vertical: "top",
+                                            horizontal: "right",
+                                        }}
+                                        keepMounted
+                                        transformOrigin={{
+                                            vertical: "top",
+                                            horizontal: "right",
+                                        }}
+                                        open={Boolean(anchorElUser)}
+                                        onClose={handleCloseUserMenu}
+                                    >
+                                        <MenuItem
+                                            onClick={() => {
+                                                dispatch({
+                                                    type: "OPEN_CHANGE_PASSWORD_MODAL",
+                                                });
+                                                handleCloseUserMenu();
+                                            }}
+                                        >
+                                            <Typography textAlign="center">
+                                                Change Password
+                                            </Typography>
+                                        </MenuItem>
+                                        <MenuItem
+                                            onClick={() => {
+                                                handleCloseUserMenu();
+                                                logOut();
+                                            }}
+                                        >
+                                            <Typography textAlign="center">
+                                                Logout
+                                            </Typography>
+                                        </MenuItem>
+                                    </Menu>{" "}
+                                </>
+                            )}
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            {paymentLoader ? <LinearProgress position="fixed" /> : ""}
+        </>
+    );
 };
 
 export default NavBar;

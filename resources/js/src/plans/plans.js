@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "../helpers/axios";
 import { NavLink } from "react-router-dom";
 import BreadCrumbs from "../components/BreadCrumbs";
-
+import TextLoader from './../UI/loader/TextLoader'
 function PackageComponent() {
   const [datas, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,17 +44,7 @@ function PackageComponent() {
           <section style={{ padding: 0 }}>
             <div className="pricing pricing-palden">
               {loading ? (
-                <div className="wrapper">
-                  <div className="loader" style={{ marginTop: "100%" }}>
-                    <span className="pip-0"></span>
-                    <span className="pip-1"></span>
-                    <span className="pip-2"></span>
-                    <span className="pip-3"></span>
-                    <span className="pip-4"></span>
-                    <span className="pip-5"></span>
-                  </div>
-                  <h1 className="mt-3">Loading</h1>
-                </div>  
+               <TextLoader></TextLoader>
               ) : (
                 datas.map((data, index) => (
                   <div

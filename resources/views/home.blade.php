@@ -1,549 +1,624 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="zxx">
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - Consulting HTML Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TNPSC Mains | Online Practice and Evaluation Platform for TNPSC</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/orange-book.png">
 
-    <!-- Favicon -->
-    <link href="/homepage/img/favicon.ico" rel="icon">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/frontend/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/frontend/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/frontend/assets/css/slicknav.css">
+    <link rel="stylesheet" href="/frontend/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/frontend/assets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="/frontend/assets/css/gijgo.css">
+    <link rel="stylesheet" href="/frontend/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/frontend/assets/css/animated-headline.css">
+    <link rel="stylesheet" href="/frontend/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/frontend/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/frontend/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/frontend/assets/css/slick.css">
+    <link rel="stylesheet" href="/frontend/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/frontend/assets/css/style.css">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="/homepage/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="/homepage/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="/homepage/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="/frontend/assets/img/logo/loder.png" alt="">
+                </div>
             </div>
         </div>
-        <!-- Spinner End -->
-
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand p-0">
-                    <h1 class="m-0">TNPSC MAINS</h1>
-                    <!-- <img src="/homepage/img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="index.html" class="nav-item nav-link active">Courses</a>
-                        <a href="index.html" class="nav-item nav-link active">About Us</a>
-                        <a href="index.html" class="nav-item nav-link active">Contact Us</a>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-3 col-lg-3">
+                                <div class="logo">
+                                    <a href="{{route('home')}}"><img style="height:40px;" src="/orange-book.png" alt=""> <span class="hero_caption" style="font-size:25px;font-weight:900"> TNPSC Mains</span ></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-9">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li class="  active"><a class="py-4" href="{{route('home')}}">Home</a></li>
+                                                <li><a class="py-4" href="/exams">Courses</a></li>
+                                                <li><a class="py-4" href="{{route('about')}}">About</a></li>
+                                                <li><a class="py-4" href="{{route('contact')}}">Contact</a></li>
+                                                <!-- Button -->
+                                                {{-- <li class="button-header margin-left "><a href="#"
+                                                        class="btn">Join</a></li>
+                                                <li class="button-header"><a href="login.html" class="btn btn3">Log
+                                                        in</a></li> --}}
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
                     </div>
-                    {{-- <a href="" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">Register</a> --}}
                 </div>
-            </nav>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? slider Area Start-->
+        <section class="slider-area ">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-7 col-md-12">
+                                <div class="hero__caption">
+                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">Online Evaluation<br> platform</h1>
+                                    <p data-animation="fadeInLeft" data-delay="0.4s">Be prepared for TNPSC mains with class, study material, and tests based on the latest trend and pattern</p>
+                                    <a href="/exams" class="btn hero-btn" data-animation="fadeInLeft"
+                                        data-delay="0.7s">Try for Free</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ? services-area -->
+        <div class="services-area">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="/frontend/assets/img/icon/icon1.svg" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>60+ MAINS tests</h3>
+                                <p>Daily tests with evaluation from cleared Officers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="/frontend/assets/img/icon/icon2.svg" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>Expert Faculties</h3>
+                                <p>15+ years of experienced faculties and cleared aspirants.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="/frontend/assets/img/icon/icon3.svg" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>One Day Evaluation</h3>
+                                <p>Answer papers will be evaluated within 1 day.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Courses area start -->
+        <div class="courses-area section-padding40 fix">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+                            <h2>Mains Exam Package</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="courses-actives">
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            {{-- <div class="properties__img overlay1">
+                                <a href="#"><img src="/frontend/assets/img/gallery/featured1.png" alt=""></a>
+                            </div> --}}
+                            <div class="properties__caption">
+                                {{-- <p>User Experience</p> --}}
+                                <h3 class="text-center" ><a href="#">TEST PACKAGE</a></h3>
+                                <div class="single-features mt-4">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Daily Test series</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Answer Evaluation by experienced  faculties</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>12/7 Online support</p>
+                                    </div>
+                                </div>
+                                {{-- <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <div class="restaurant-name">
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half"></i>
+                                        </div>
+                                        <p><span>(4.5)</span> based on 120</p>
+                                    </div>
+                                    <div class="price">
+                                        <span>$135</span>
+                                    </div>
+                                </div> --}}
+                                <a href="/exams" class="border-btn border-btn2">View Course</a>
+                            </div>
 
-            <div class="container-xxl bg-primary hero-header">
+                        </div>
+                    </div>
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            {{-- <div class="properties__img overlay1">
+                                <a href="#"><img src="/frontend/assets/img/gallery/featured1.png" alt=""></a>
+                            </div> --}}
+                            <div class="properties__caption">
+                                {{-- <p>User Experience</p> --}}
+                                <h3 class="text-center" ><a href="#">BOOSTER PACKAGE</a></h3>
+                                <div class="single-features mt-4">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Daily Test series</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Answer Evaluation by cleared officers</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Complete study materials (Printed Notes)</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>12/7 Online support</p>
+                                    </div>
+                                </div>
+                                {{-- <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <div class="restaurant-name">
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half"></i>
+                                        </div>
+                                        <p><span>(4.5)</span> based on 120</p>
+                                    </div>
+                                    <div class="price">
+                                        <span>$135</span>
+                                    </div>
+                                </div> --}}
+                                <a href="/exams" class="border-btn border-btn2">View Course</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            {{-- <div class="properties__img overlay1">
+                                <a href="#"><img src="/frontend/assets/img/gallery/featured1.png" alt=""></a>
+                            </div> --}}
+                            <div class="properties__caption">
+                                {{-- <p>User Experience</p> --}}
+                                <h3 class="text-center" ><a href="#">PREMIUM PACKAGE</a></h3>
+                                <div class="single-features mt-4">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Daily Test series</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Answer Evaluation by experienced  faculties</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Video class for all subjects</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Complete study materials (Printed Notes)</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>Weekly guidance from cleared officers</p>
+                                    </div>
+                                </div>
+                                <div class="single-features">
+                                    <div class="features-icon">
+                                        <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                                    </div>
+                                    <div class="features-caption">
+                                        <p>12/7 Online support</p>
+                                    </div>
+                                </div>
+                                {{-- <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <div class="restaurant-name">
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half"></i>
+                                        </div>
+                                        <p><span>(4.5)</span> based on 120</p>
+                                    </div>
+                                    <div class="price">
+                                        <span>$135</span>
+                                    </div>
+                                </div> --}}
+                                <a href="/exams" class="border-btn border-btn2">View Course</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Single -->
+                    <!-- Single -->
+
+                    <!-- Single -->
+                </div>
+            </div>
+        </div>
+        <!-- Courses area End -->
+        <!--? About Area-1 Start -->
+        {{-- <section class="about-area1 fix pt-10">
+            <div class="support-wrapper align-items-center">
+                <div class="left-content1">
+                    <div class="about-icon">
+                        <img src="/frontend/assets/img/icon/about.svg" alt="">
+                    </div>
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-55">
+                        <div class="front-text">
+                            <h2 class="">Learn new skills online with top educators</h2>
+                            <p>The automated process all your website tasks. Discover tools and
+                                techniques to engage effectively with vulnerable children and young
+                                people.</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Techniques to engage effectively with vulnerable children and young people.</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Join millions of people from around the world learning together.</p>
+                        </div>
+                    </div>
+
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Join millions of people from around the world learning together. Online learning is as
+                                easy and natural.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content1">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="/frontend/assets/img/gallery/about.png" alt="">
+
+                        <div class="video-icon">
+                            <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i
+                                    class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> --}}
+        <!-- About Area End -->
+        <!--? top subjects Area Start -->
+
+        <!-- top subjects End -->
+        <!--? About Area-3 Start -->
+        <section class="about-area3 fix">
+            <div class="support-wrapper align-items-center">
+                <div class="right-content3">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="/frontend/assets/img/gallery/about3.png" alt="">
+                    </div>
+                </div>
+                <div class="left-content3">
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-20">
+                        <div class="front-text">
+                            <h2 class="">TamilNadu's 1st Website based TNPSC MAINS Exam evaluation platform.
+                                </h2>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Our teams have educationist, professor, competitive examination trends analyzer, Government officials and subject experts.</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>We procide Mains master guide A-Z specially designed for TNPSC GROUP-2 MAINS EXAMINATION( new pattern) .</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="/frontend/assets/img/icon/right-icon.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Our study materials are prepared by TNPSC toppers and for every evaluation we provide both answer key & feedback from cleared aspirants </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Area End -->
+        <!--? Team -->
+        {{-- <section class="team-area section-padding40 fix">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+                            <h2>Community experts</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-active">
+                    <div class="single-cat text-center">
+                        <div class="cat-icon">
+                            <img src="/frontend/assets/img/gallery/team1.png" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Mr. Urela</a></h5>
+                            <p>The automated process all your website tasks.</p>
+                        </div>
+                    </div>
+                    <div class="single-cat text-center">
+                        <div class="cat-icon">
+                            <img src="/frontend/assets/img/gallery/team2.png" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Mr. Uttom</a></h5>
+                            <p>The automated process all your website tasks.</p>
+                        </div>
+                    </div>
+                    <div class="single-cat text-center">
+                        <div class="cat-icon">
+                            <img src="/frontend/assets/img/gallery/team3.png" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Mr. Shakil</a></h5>
+                            <p>The automated process all your website tasks.</p>
+                        </div>
+                    </div>
+                    <div class="single-cat text-center">
+                        <div class="cat-icon">
+                            <img src="/frontend/assets/img/gallery/team4.png" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Mr. Arafat</a></h5>
+                            <p>The automated process all your website tasks.</p>
+                        </div>
+                    </div>
+                    <div class="single-cat text-center">
+                        <div class="cat-icon">
+                            <img src="/frontend/assets/img/gallery/team3.png" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Mr. saiful</a></h5>
+                            <p>The automated process all your website tasks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> --}}
+        <!-- Services End -->
+        <!--? About Area-2 Start -->
+        {{-- <section class="about-area2 fix pb-padding">
+            <div class="support-wrapper align-items-center">
+                <div class="right-content2">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="/frontend/assets/img/gallery/about2.png" alt="">
+                    </div>
+                </div>
+                <div class="left-content2">
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-20">
+                        <div class="front-text">
+                            <h2 class="">Take the next step
+                                toward your personal
+                                and professional goals
+                                with us.</h2>
+                            <p>The automated process all your website tasks. Discover tools and techniques to engage
+                                effectively with vulnerable children and young people.</p>
+                            <a href="#" class="btn">Join now for Free</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> --}}
+        <!-- About Area End -->
+    </main>
+    <footer>
+        <div class="footer-wrappper footer-bg">
+            <!-- Footer Start-->
+
+            <!-- footer-bottom area -->
+            <div class="footer-bottom-area">
                 <div class="container">
-                    <div class="row g-5 align-items-center">
-                        <div class="col-lg-6 text-center text-lg-start">
-                            <h1 class="text-white mb-4 animated zoomIn">We Help To Push Your Business To The Top Level</h1>
-                            <p class="text-white pb-3 animated zoomIn">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
-                            <a href="" class="btn btn-outline-light rounded-pill border-2 py-3 px-5 animated slideInRight">Learn More</a>
-                        </div>
-                        <div class="col-lg-6 text-center text-lg-start">
-                            <img class="img-fluid animated zoomIn" src="/homepage/img/hero.png" alt="">
+                    <div class="footer-border py-3">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-xl-12 ">
+                                <div class="footer-copy-right text-center">
+                                    <p class="mb-0">
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        &copy;
+                                        2022 TNPSCMains All rights reserved
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Footer End-->
         </div>
-        <!-- Navbar & Hero End -->
-
-
-        <!-- About Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow zoomIn" data-wow-delay="0.1s">
-                        <img class="img-fluid" src="/homepage/img/about.png">
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">About Us</div>
-                        <h2 class="mb-4">Award Wining Consultancy Agency For Your Business</h2>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod</p>
-                        <div class="row g-3 mb-4">
-                            <div class="col-12 d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-user-tie text-white"></i>
-                                </div>
-                                <div class="ms-4">
-                                    <h6>Business Planning</h6>
-                                    <span>Tempor erat elitr rebum at clita. Diam dolor ipsum amet eos erat ipsum lorem et sit sed stet lorem sit clita duo</span>
-                                </div>
-                            </div>
-                            <div class="col-12 d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-chart-line text-white"></i>
-                                </div>
-                                <div class="ms-4">
-                                    <h6>Financial Analaysis</h6>
-                                    <span>Tempor erat elitr rebum at clita. Diam dolor ipsum amet eos erat ipsum lorem et sit sed stet lorem sit clita duo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-
-
-        {{-- <!-- Newsletter Start -->
-        <div class="container-xxl bg-primary my-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container px-lg-5">
-                <div class="row align-items-center" style="height: 250px;">
-                    <div class="col-12 col-md-6">
-                        <h3 class="text-white">Ready to get started</h3>
-                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                        <img class="img-fluid mt-5" style="max-height: 250px;" src="/homepage/img/newsletter.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Newsletter End --> --}}
-
-
-        <!-- Service Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Top Courses</div>
-                    <h2 class="mb-5">We Provide Solutions On Your Education thirst</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-user-tie fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Business Research</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-chart-pie fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Stretagic Planning</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-chart-line fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Market Analysis</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-chart-area fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Financial Analaysis</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-balance-scale fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">legal Advisory</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-house-damage fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Tax & Insurance</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Service End -->
-
-
-        <!-- Features Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Features</div>
-                        <h2 class="mb-4">Why People Choose Us? We Are Trusted & Award Wining Agency</h2>
-                        <p>Clita nonumy sanctus nonumy et clita tempor, et sea amet ut et sadipscing rebum amet takimata amet, sed accusam eos eos dolores dolore et. Et ea ea dolor rebum invidunt clita eos. Sea accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
-                        <p>Et ea ea dolor rebum invidunt clita eos. Sea accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="row g-5">
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-cubes text-white"></i>
-                                    </div>
-                                    <h6 class="mb-0">Best In Industry</h6>
-                                </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                            </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-percent text-white"></i>
-                                    </div>
-                                    <h6 class="mb-0">99% Success Rate</h6>
-                                </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                            </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-award text-white"></i>
-                                    </div>
-                                    <h6 class="mb-0">Award Winning</h6>
-                                </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                            </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-smile-beam text-white"></i>
-                                    </div>
-                                    <h6 class="mb-0">100% Happy Client</h6>
-                                </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                            </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-user-tie text-white"></i>
-                                    </div>
-                                    <h6 class="mb-0">Professional Advisors</h6>
-                                </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                            </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-headset text-white"></i>
-                                    </div>
-                                    <h6 class="mb-0">24/7 Customer Support</h6>
-                                </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Features End -->
-
-
-        <!-- Client Start -->
-        {{-- <div class="container-xxl bg-primary my-6 py-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="owl-carousel client-carousel">
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-1.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-2.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-3.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-4.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-5.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-6.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-7.png" alt=""></a>
-                    <a href="#"><img class="img-fluid" src="/homepage/img/logo-8.png" alt=""></a>
-                </div>
-            </div>
-        </div> --}}
-        <!-- Client End -->
-
-
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Testimonial</div>
-                    <h2 class="mb-5">What Our Clients Say!</h2>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="/homepage/img/testimonial-1.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="/homepage/img/testimonial-2.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="/homepage/img/testimonial-3.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="/homepage/img/testimonial-4.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
-
-
-        <!-- Team Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Our Team</div>
-                    <h2 class="mb-5">Meet Our Team Members</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="/homepage/img/team-1.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="/homepage/img/team-2.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="/homepage/img/team-3.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="/homepage/img/team-4.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team End -->
-
-
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer  wow fadeIn" data-wow-delay="0.1s" >
-            {{-- <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Get In Touch</h5>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Quick Link</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Popular Link</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Newsletter</h5>
-                        <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            <div class="copyright py-3">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">TNPSC MAINS</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        {{-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> --}}
-                        {{-- <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a> --}}
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Terms and condition</a>
-                            <a href="">Privacy Policy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="container">
-            </div> --}}
-        </div>
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top">
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/homepage/lib/wow/wow.min.js"></script>
-    <script src="/homepage/lib/easing/easing.min.js"></script>
-    <script src="/homepage/lib/waypoints/waypoints.min.js"></script>
-    <script src="/homepage/lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- JS here -->
+    <script src="/frontend/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="/frontend/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/frontend/assets/js/popper.min.js"></script>
+    <script src="/frontend/assets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="/frontend/assets/js/jquery.slicknav.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="/homepage/js/main.js"></script>
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="/frontend/assets/js/owl.carousel.min.js"></script>
+    <script src="/frontend/assets/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="/frontend/assets/js/wow.min.js"></script>
+    <script src="/frontend/assets/js/animated.headline.js"></script>
+    <script src="/frontend/assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Date Picker -->
+    <script src="/frontend/assets/js/gijgo.min.js"></script>
+    <!-- Nice-select, sticky -->
+    <script src="/frontend/assets/js/jquery.nice-select.min.js"></script>
+    <script src="/frontend/assets/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="/frontend/assets/js/jquery.barfiller.js"></script>
+
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="/frontend/assets/js/jquery.counterup.min.js"></script>
+    <script src="/frontend/assets/js/waypoints.min.js"></script>
+    <script src="/frontend/assets/js/jquery.countdown.min.js"></script>
+    <script src="/frontend/assets/js/hover-direction-snake.min.js"></script>
+
+    <!-- contact js -->
+    <script src="/frontend/assets/js/contact.js"></script>
+    <script src="/frontend/assets/js/jquery.form.js"></script>
+    <script src="/frontend/assets/js/jquery.validate.min.js"></script>
+    <script src="/frontend/assets/js/mail-script.js"></script>
+    <script src="/frontend/assets/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="/frontend/assets/js/plugins.js"></script>
+    <script src="/frontend/assets/js/main.js"></script>
+
 </body>
 
 </html>

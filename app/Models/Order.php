@@ -11,4 +11,14 @@ class Order extends Model
 
     protected $guarded = [];
 
+    public function exams()
+    {
+        return $this->belongsTo(Exam::class,'exam_id');
+    }
+
+    public function courses()
+    {
+        return $this->belongsTo(Course::class,'course_id');
+    }
+
 }

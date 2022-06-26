@@ -15,78 +15,89 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function Notification() {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [datas, setDatas] = useState([]);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [datas, setDatas] = useState([]);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
-  useEffect(() => {
-    axios
-      .get("/notifications")
-      .then((resp) => {
-        console.log(resp.data);
-        setDatas(resp.data.data);
-      })
-      .catch((error) => {});
-  }, []);
+    useEffect(() => {
+        axios
+            .get("/notifications")
+            .then((resp) => {
+                console.log(resp.data);
+                setDatas(resp.data.data);
+            })
+            .catch((error) => {});
+    }, []);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+    const open = Boolean(anchorEl);
+    const id = open ? "simple-popover" : undefined;
 
-  return (
-    <>
-      <div>
-        <IconButton
-          size="small"
-          className="mx-3"
-          aria-label="show 17 new notifications"
-          color="inherit"
-          aria-describedby={id}
-          variant="contained"
-          onClick={handleClick}
-        >
-          <Badge badgeContent={datas.length} showZero color="error">
-            <NotificationsOutlinedIcon color="action" />
-          </Badge>
-        </IconButton>
-
-        <Popover
-          style={{ borderRadius: "20px" }}
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-        >
-          {datas.length > 0 ? (
-            <Typography >
-              <List dense={true}>
-                {datas.map((data) => (
-                  <>
-                    <ListItem>
-                      <ListItemText sx={{ p: 2 }} primary={`${data.title}`} />
-                    </ListItem>
-                    <Divider />
-                  </>
-                ))}
-              </List>
-            </Typography>
-          ) : (
-            <Typography sx={{ p: 2 }}>No Notifications found</Typography>
-          )}
-        </Popover>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div>
+                <Tooltip title="Notifications">
+                    <IconButton
+                        size="small"
+                        className="mx-1"
+                        aria-label="show 17 new notifications"
+                        color="inherit"
+                        aria-describedby={id}
+                        variant="contained"
+                        onClick={handleClick}
+                    >
+                        <Badge
+                            badgeContent={datas.length}
+                            variant="dot"
+                            color="error"
+                        >
+                            <NotificationsOutlinedIcon color="action" />
+                        </Badge>
+                    </IconButton>
+                </Tooltip>
+                <Popover
+                    style={{ borderRadius: "20px" }}
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                    }}
+                >
+                    {datas.length > 0 ? (
+                        <Typography>
+                            <List dense={true}>
+                                {datas.map((data) => (
+                                    <>
+                                        <ListItem>
+                                            <ListItemText
+                                                sx={{ p: 2 }}
+                                                primary={`${data.title}`}
+                                            />
+                                        </ListItem>
+                                        <Divider />
+                                    </>
+                                ))}
+                            </List>
+                        </Typography>
+                    ) : (
+                        <Typography sx={{ p: 2 }}>
+                            No Notifications found
+                        </Typography>
+                    )}
+                </Popover>
+            </div>
+        </>
+    );
 }
