@@ -1,25 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {useSelector ,useDispatch} from 'react-redux';
-
+import { useSelector, useDispatch } from "react-redux";
 
 const Sidebar = () => {
-  const user= useSelector(state=>state.authentication.user)
-  const dispatch = useDispatch();
-  return (
-    <>
-      <aside
-        style={{
-          backgroundColor: " #000000",
-          backgroundImage: "linear-gradient(147deg, #000000 0%, #434343 74%)",
-        }}
-        id="layout-menu"
-        className="layout-menu menu-vertical menu bg-menu-theme"
-      >
-        <div className="app-brand demo px-1">
-          <a href="index.html" className="app-brand-link">
-            <span className="app-brand-logo demo">
-              {/* <svg
+    const user = useSelector((state) => state.authentication.user);
+    const dispatch = useDispatch();
+    return (
+        <>
+            <aside
+                style={{
+                    backgroundColor: " #000000",
+                    backgroundImage:
+                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                }}
+                id="layout-menu"
+                className="layout-menu menu-vertical menu bg-menu-theme"
+            >
+                <div className="app-brand demo px-1">
+                    <a href="index.html" className="app-brand-link">
+                        <span className="app-brand-logo demo">
+                            {/* <svg
                 width={25}
                 viewBox="0 0 25 42"
                 version="1.1"
@@ -93,198 +93,227 @@ const Sidebar = () => {
                   </g>
                 </g>
               </svg> */}
-              <img style={{height:'50px'}} src="/orange-book.png" />
-            </span>
-            <span style={{fontSize:"1.5rem"}} className="text-uppercase app-brand-text demo menu-text fw-bolder ms-2">
-              TNPSC MAINS
-            </span>
-          </a>
-          <a
-            href="javascript:void(0);"
-            onClick={() => {
-              document
-                .getElementById("layout")
-                .classList.remove("layout-menu-expanded");
-            }}
-            className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"
-          >
-            <i className="bx bx-chevron-left bx-sm align-middle" />
-          </a>
-        </div>
-        <div className="menu-inner-shadow" />
-        <ul className="menu-inner py-1">
-          {/* Dashboard */}
-          {/* style={{
+                            <img
+                                style={{ height: "50px" }}
+                                src="/orange-book.png"
+                            />
+                        </span>
+                        <span
+                            style={{ fontSize: "1.5rem" }}
+                            className="text-uppercase app-brand-text demo menu-text fw-bolder ms-2"
+                        >
+                            TNPSC MAINS
+                        </span>
+                    </a>
+                    <a
+                        href="javascript:void(0);"
+                        onClick={() => {
+                            document
+                                .getElementById("layout")
+                                .classList.remove("layout-menu-expanded");
+                        }}
+                        className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"
+                    >
+                        <i className="bx bx-chevron-left bx-sm align-middle" />
+                    </a>
+                </div>
+                <div className="menu-inner-shadow" />
+                <ul className="menu-inner py-1">
+                    {/* Dashboard */}
+                    {/* style={{
               background: "#000000",
               backgroundImage: "linear-gradient(147deg, #000000 0%, #434343 74%)",
             }} */}
-          <li className="menu-item  ">
-            <NavLink
-              to="/"
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      background: "#000000",
-                      color: "white",
-                      backgroundImage:
-                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                    }
-                  : { color: "white" }
-              }
-              className=" text-uppercase menu-link"
-            >
-              <i className="menu-icon tf-icons bx bxs-home" />
-              <div data-i18n="home">Home</div>
-            </NavLink>
-          </li>
-          <li className="menu-item  ">
-            <NavLink
-              to="/my-dashboard"
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      background: "#000000",
-                      color: "white",
-                      backgroundImage:
-                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                    }
-                  : { color: "white" }
-              }
-              className=" text-uppercase menu-link"
-            >
-              <i className="menu-icon tf-icons bx bxs-category" />
-              <div data-i18n="dashboard">Dashboard
+                    <li className="menu-item  ">
+                        <NavLink
+                            to="/"
+                            style={({ isActive }) =>
+                                isActive
+                                    ? {
+                                          background: "#000000",
+                                          color: "white",
+                                          backgroundImage:
+                                              "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                                      }
+                                    : { color: "white" }
+                            }
+                            className=" text-uppercase menu-link"
+                        >
+                            <i className="menu-icon tf-icons bx bxs-home" />
+                            <div data-i18n="home">Home</div>
+                        </NavLink>
+                    </li>
+                    <li className="menu-item ">
+                        {user != null ? (
+                            <NavLink
+                                to="/my-dashboard"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? {
+                                              background: "#000000",
+                                              color: "white",
+                                              backgroundImage:
+                                                  "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                                          }
+                                        : { color: "white" }
+                                }
+                                className=" text-uppercase menu-link"
+                            >
+                                <i className="menu-icon tf-icons bx bxs-category" />
+                                <div data-i18n="dashboard">Dashboard</div>
+                            </NavLink>
+                        ) : (
+                            <a
+                                href="javascript:void(0)"
+                                onClick={() => {
+                                    dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                }}
+                                style={{ color: "white" }}
+                                className=" text-uppercase menu-link"
+                            >
+                                <i className="menu-icon tf-icons bx bxs-category" />
+                                <div data-i18n="dashboard">Dashboard</div>
+                            </a>
+                        )}
+                    </li>
 
-              </div>
-            </NavLink>
-          </li>
-          <li className="menu-item ">
-            <NavLink
-              to="/exams"
-              style={({ isActive }) =>
-                isActive
-                  ? {
-                      background: "#000000",
-                      color: "white",
-                      backgroundImage:
-                        "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                    }
-                  : { color: "white" }
-              }
-              className=" text-uppercase menu-link"
-            >
-              <i className="menu-icon tf-icons bx bx-library" />
-              <div data-i18n="exam">Exam</div>
-            </NavLink>
-          </li>
-          <li class="menu-item ">
-            <a href="javascript:void(0)" className=" text-uppercase menu-link">
-              <div data-i18n="dashboard">STUDENT CORNER</div>
-            </a>
-          </li>
-          <li className="menu-item ">
-            {user != null ? (
-              <NavLink
-                to="/profile"
-                style={({ isActive }) =>
-                  isActive
-                    ? {
-                        background: "#000000",
-                        color: "white",
-                        backgroundImage:
-                          "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                      }
-                    : { color: "white" }
-                }
-                className=" text-uppercase menu-link"
-              >
-                <i className="menu-icon tf-icons bx bx-user" />
-                <div data-i18n="exam">My Profile</div>
-              </NavLink>
-            ) : (
-              <a
-                href="javascript:void(0)"
-                onClick={()=>{dispatch({type:'OPEN_LOGIN_MODAL'})}}
-                style={{color: "white"}}
-                className=" text-uppercase menu-link"
-              >
-                <i className="menu-icon tf-icons bx bx-user" />
-                <div data-i18n="exam">My Profile</div>
-              </a>
-            )}
-          </li>
-          <li className="menu-item ">
-            {user != null ? (
-              <NavLink
-                to="/my-courses"
-                style={({ isActive }) =>
-                  isActive
-                    ? {
-                        background: "#000000",
-                        color: "white",
-                        backgroundImage:
-                          "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                      }
-                    : { color: "white" }
-                }
-                className=" text-uppercase menu-link"
-              >
-                <i className="menu-icon tf-icons bx bx-user" />
-                <div data-i18n="exam">My Courses</div>
-              </NavLink>
-            ) : (
-              <a
-                href="javascript:void(0)"
-                onClick={()=>{dispatch({type:'OPEN_LOGIN_MODAL'})}}
-                style={{color: "white"}}
-                className=" text-uppercase menu-link"
-              >
-                <i className="menu-icon tf-icons bx bx-user" />
-                <div data-i18n="exam">My Courses</div>
-              </a>
-            )}
-          </li>
-          <li className="menu-item ">
-            {user != null ? (
-              <NavLink
-                to="/my-reports"
-                style={({ isActive }) =>
-                  isActive
-                    ? {
-                        background: "#000000",
-                        color: "white",
-                        backgroundImage:
-                          "linear-gradient(147deg, #000000 0%, #434343 74%)",
-                      }
-                    : { color: "white" }
-                }
-                className=" text-uppercase menu-link"
-              >
-                <i className="menu-icon tf-icons bx bx-user" />
-                <div data-i18n="exam">Evaluation Report</div>
-              </NavLink>
-            ) : (
-              <a
-                href="javascript:void(0)"
-                onClick={()=>{dispatch({type:'OPEN_LOGIN_MODAL'})}}
-                style={{color: "white"}}
-                className=" text-uppercase menu-link"
-              >
-                <i className="menu-icon tf-icons bx bx-user" />
-                <div data-i18n="exam">Evaluation Report</div>
-              </a>
-            )}
-          </li>
-          {/* <li class="menu-item ">
+                    <li className="menu-item ">
+                        <NavLink
+                            to="/exams"
+                            style={({ isActive }) =>
+                                isActive
+                                    ? {
+                                          background: "#000000",
+                                          color: "white",
+                                          backgroundImage:
+                                              "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                                      }
+                                    : { color: "white" }
+                            }
+                            className=" text-uppercase menu-link"
+                        >
+                            <i className="menu-icon tf-icons bx bx-library" />
+                            <div data-i18n="exam">Exam</div>
+                        </NavLink>
+                    </li>
+                    <li class="menu-item ">
+                        <a
+                            href="javascript:void(0)"
+                            className=" text-uppercase menu-link"
+                        >
+                            <div data-i18n="dashboard">STUDENT CORNER</div>
+                        </a>
+                    </li>
+                    <li className="menu-item ">
+                        {user != null ? (
+                            <NavLink
+                                to="/profile"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? {
+                                              background: "#000000",
+                                              color: "white",
+                                              backgroundImage:
+                                                  "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                                          }
+                                        : { color: "white" }
+                                }
+                                className=" text-uppercase menu-link"
+                            >
+                                <i className="menu-icon tf-icons bx bx-user" />
+                                <div data-i18n="exam">My Profile</div>
+                            </NavLink>
+                        ) : (
+                            <a
+                                href="javascript:void(0)"
+                                onClick={() => {
+                                    dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                }}
+                                style={{ color: "white" }}
+                                className=" text-uppercase menu-link"
+                            >
+                                <i className="menu-icon tf-icons bx bx-user" />
+                                <div data-i18n="exam">My Profile</div>
+                            </a>
+                        )}
+                    </li>
+                    <li className="menu-item ">
+                        {user != null ? (
+                            <NavLink
+                                to="/my-courses"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? {
+                                              background: "#000000",
+                                              color: "white",
+                                              backgroundImage:
+                                                  "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                                          }
+                                        : { color: "white" }
+                                }
+                                className=" text-uppercase menu-link"
+                            >
+                                <i class="fa-solid tf-icons fa-circle-book-open menu-icon"></i>
+                                {/* <i className="menu-icon tf-icons bx bx-user" /> */}
+                                <div data-i18n="exam">My Courses</div>
+                            </NavLink>
+                        ) : (
+                            <a
+                                href="javascript:void(0)"
+                                onClick={() => {
+                                    dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                }}
+                                style={{ color: "white" }}
+                                className=" text-uppercase menu-link"
+                            >
+                                <i class="fa-solid tf-icons fa-book menu-icon"></i>
+                                <div data-i18n="exam">My Courses</div>
+                            </a>
+                        )}
+                    </li>
+                    <li className="menu-item ">
+                        {user != null ? (
+                            <NavLink
+                                to="/my-reports"
+                                style={({ isActive }) =>
+                                    isActive
+                                        ? {
+                                              background: "#000000",
+                                              color: "white",
+                                              backgroundImage:
+                                                  "linear-gradient(147deg, #000000 0%, #434343 74%)",
+                                          }
+                                        : { color: "white" }
+                                }
+                                className=" text-uppercase menu-link"
+                            >
+                                <i class="fa-solid tf-icons fa-chart-simple menu-icon"></i>
+                                <div data-i18n="exam">Evaluation Report</div>
+                            </NavLink>
+                        ) : (
+                            <a
+                                href="javascript:void(0)"
+                                onClick={() => {
+                                    dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                }}
+                                style={{ color: "white" }}
+                                className=" text-uppercase menu-link"
+                            >
+                                <i class="fa-solid tf-icons fa-chart-simple menu-icon"></i>
+                                <div data-i18n="exam">Evaluation Report</div>
+                            </a>
+                        )}
+                    </li>
+                    {/* <li class="menu-item ">
             <a href="javascript:void(0)" className=" text-uppercase menu-link">
               <div data-i18n="dashboard">Miscellaneous CORNER</div>
             </a>
           </li> */}
-        </ul>
-      </aside>
-      {/* / Menu */}
-    </>
-  );
+                </ul>
+            </aside>
+            {/* / Menu */}
+        </>
+    );
 };
 
 export default Sidebar;
