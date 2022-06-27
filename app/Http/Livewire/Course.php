@@ -8,12 +8,13 @@ use App\Models\Test;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 use Str;
 
 class Course extends Component
 {
     use WithFileUploads;
-
+    use WithPagination;
     public
         $copyCourseId = 0,
         $testname,
@@ -84,7 +85,7 @@ class Course extends Component
     {
         $this->exams = Exam::where('status', 1)->get();
 
-        $this->datas = ModelsCourse::get();
+        // $this->datas = ModelsCourse::get();
     }
 
     public function savetest()
@@ -385,8 +386,9 @@ class Course extends Component
 
     public function render()
     {
+        $datas = ModelsCourse::paginate();
         $contents = ModelsCourse::get();
         $this->testdata = ModelsCourse::where('id', $this->test)->first();
-        return view('livewire.course', compact('contents'))->extends('layouts.master')->section('content');
+        return view('livewire.course', compact('contents','datas'))->extends('layouts.master')->section('content');
     }
 }

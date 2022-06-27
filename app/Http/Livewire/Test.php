@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\SubmittedTest;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Test extends Component
 {
+    use WithPagination;
 
-    public $datas ,$evaluators ,$evaluator_id = null,$test_id= null,$status= null;
+    public $evaluators ,$evaluator_id = null,$test_id= null,$status= null;
 
     protected $listeners = [
       'evaluator' => 'evaluator',
@@ -77,8 +79,9 @@ class Test extends Component
 
     public function render()
     {
-        $this->datas = SubmittedTest::select('id','test_id','user_id','evaluator_id','submited_file','created_at','status','updated_at')->with('user:id,name','evaluator:id,name','test:id,name,course_id','test.course:id,name,exam_id','test.course.exam:id,name')->orderBy('id','DESC')->get();
 
-        return view('livewire.test')->extends('layouts.master')->section('content');
+        $datas = SubmittedTest::select('id','test_id','user_id','evaluator_id','submited_file','created_at','status','updated_at')->with('user:id,name','evaluator:id,name','test:id,name,course_id','test.course:id,name,exam_id','test.course.exam:id,name')->orderBy('id','DESC')->paginate(10);
+
+        return view('livewire.test',compact('datas'))->extends('layouts.master')->section('content');
     }
 }

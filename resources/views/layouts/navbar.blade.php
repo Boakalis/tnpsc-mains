@@ -9,8 +9,8 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                {{-- <i class="bx bx-search fs-4 lh-0"></i>
+                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." /> --}}
             </div>
         </div>
         <!-- /Search -->
@@ -20,25 +20,24 @@
             <li class="nav-item lh-1 me-3">
                 <a
                     class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
+                    href="javascript:void(0)"
                     data-icon="octicon-star"
                     data-size="large"
                     data-show-count="true"
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                 >
-                    Star
+                    {{@Auth::user()->name}}
                 </a>
             </li>
 
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
+
+                        <i class=" fa fa-user w-px-40 h-auto rounded-circle"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
@@ -46,29 +45,29 @@
                                         <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
-                                <div class="flex-grow-1">
+                                <div class="">
                                     <span class="fw-semibold d-block">John Doe</span>
                                     <small class="text-muted">Admin</small>
                                 </div>
                             </div>
                         </a>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <a class="dropdown-item" href="#">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('change.password')}}">
                             <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
+                            <span class="align-middle">Change Password</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="#">
                             <span class="d-flex align-items-center align-middle">
                                 <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -76,12 +75,12 @@
                                 <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                             </span>
                         </a>
-                    </li>
-                    <li>
+                    </li> --}}
+                    {{-- <li>
                         <div class="dropdown-divider"></div>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{route('custom-logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>

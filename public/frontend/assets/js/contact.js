@@ -58,8 +58,9 @@ $(document).ready(function(){
                 $(form).ajaxSubmit({
                     type:"POST",
                     data: $(form).serialize(),
-                    url:"contact_process.php",
-                    success: function() {
+                    url:"/contact-submit",
+                    success: function(resp) {
+                        console.log(resp)
                         $('#contactForm :input').attr('disabled', 'disabled');
                         $('#contactForm').fadeTo( "slow", 1, function() {
                             $(this).find(':input').attr('disabled', 'disabled');
@@ -68,6 +69,8 @@ $(document).ready(function(){
                             $('.modal').modal('hide');
 		                	$('#success').modal('show');
                         })
+                        $('#contactForm').trigger('reset');
+                        toastr.success('Sent Successfully');
                     },
                     error: function() {
                         $('#contactForm').fadeTo( "slow", 1, function() {
@@ -75,6 +78,7 @@ $(document).ready(function(){
                             $('.modal').modal('hide');
 		                	$('#error').modal('show');
                         })
+                        toastr.error('Something went wrong');
                     }
                 })
             }

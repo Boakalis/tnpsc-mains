@@ -225,15 +225,16 @@ function Content() {
                         <BreadCrumbs
                             title={`${datas.exam.name} ${datas.name} course`}
                         />
-                        <div className=" container row px-0 mt-4 mx-0">
+                        <div className=" container row px-0 mt-2 mx-0 ">
                             {datas && (
                                 <Typography
-                                    variant="h5"
-                                    className=" mt-3"
+                                    variant="h6"
+                                    className=" mt-3 "
                                     gutterBottom
                                     component="div"
                                 >
-                                    EVALUATION SECTION{" "}
+
+                                    {/* EVALUATION{" "} */}
                                     <span style={{ float: "right" }}>
                                         <Chip
                                             label="Download Schedule"

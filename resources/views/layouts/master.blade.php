@@ -4,12 +4,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-        <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+        <title>Admin Dasboard | TNPSC Mains | Online Practice and Evaluation Platform for TNPSC</title>
 
         <meta name="description" content="" />
 
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/orange-book.png" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -130,9 +130,107 @@
             }
         });
     </script>
+        <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+        <script>
+            var fileUploadUrl = "{{ route('fileUploadEditor') }}";
+            const editor_config = {
+                force_p_newlines: false,
+                remove_linebreaks: false,
+                forced_root_block: "",
+                path_absolute: "{{ url('/') }}/",
+                selector: "textarea.tinymce-editor",
+                extended_valid_elements: false,
+                height: 300,
+                readonly: false,
+                menubar: true,
+                plugins: [
+                    "codesample advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars  code fullscreen",
+                    "insertdatetime media nonbreaking save table contextmenu directionality",
+                    "emoticons paste textcolor colorpicker textpattern ",
+                ],
+                toolbar: "insertfile undo redo | codesample| styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+
+                relative_urls: false,
+                convert_urls: false,
+                images_upload_handler: function(blobInfo, success, failure) {
+                    var xhr, formData;
+                    xhr = new XMLHttpRequest();
+                    xhr.withCredentials = false;
+                    xhr.open("POST", fileUploadUrl);
+                    var token = "{{ csrf_token() }}"; //document.getElementById("_token").value;
+                    xhr.setRequestHeader("X-CSRF-Token", token);
+                    xhr.onload = function() {
+                        var json;
+                        if (xhr.status != 200) {
+                            failure("HTTP Error: " + xhr.status);
+                            return;
+                        }
+                        json = JSON.parse(xhr.responseText);
+
+                        if (!json || typeof json.location != "string") {
+                            failure(xhr.responseText);
+                            return;
+                        }
+                        success(json.location);
+                    };
+                    formData = new FormData();
+                    formData.append("file", blobInfo.blob(), blobInfo.filename());
+                    xhr.send(formData);
+                },
+            };
+            tinymce.init(editor_config);
+
+            setTimeout(function() {
+                $(".alert").hide();
+            }, 10000);
+
+            function logout() {
+                $('#logOut').submit();
+            }
+
+            function deleteData(url, id) {
+                console.log(url + ',' + id);
+                Swal.fire({
+                    title: "Are you sure want to delete?",
+                    // text: "Action is irreversible. Do you want to proceed?",
+                    position: "center",
+                    // backdrop: "linear-gradient(yellow, orange)",
+                    background: "white",
+                    allowOutsideClick: true,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    showCancelButton: true,
+                    confirmButtonText: "Go Ahead",
+                    cancelButtonText: "No",
+                    confirmButtonColor: "#00ff55",
+                    cancelButtonColor: "#999999",
+                    reverseButtons: true,
+                }).then((result) => {
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: {
+                            '_token': "{{ csrf_token() }}",
+                            'id': id,
+                        },
+                        success: function(response) {
+
+                            if (response.status == 200) {
+                                toastr.success('Deleted Successfully');
+                                location.reload();
+                            } else {
+                                toastr.error('Something went wrong. Try again later');
+                            }
+                        }
+                    });
+                })
+
+            }
+        </script>
         @livewireScripts
         @stack('scripts')
 
-       
+
     </body>
 </html>

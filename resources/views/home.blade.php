@@ -35,7 +35,8 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="/frontend/assets/img/logo/loder.png" alt="">
+                    <img src="/frontend/assets/img/logo/loder.png" alt=""><br />
+                    <p style="font-size: 10px;" class="">Please Wait</p>
                 </div>
             </div>
         </div>
@@ -51,7 +52,9 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3">
                                 <div class="logo">
-                                    <a href="{{route('home')}}"><img style="height:40px;" src="/orange-book.png" alt=""> <span class="hero_caption" style="font-size:25px;font-weight:900"> TNPSC Mains</span ></a>
+                                    <a href="{{route('home')}}"><img style="height:40px;" src="/orange-book.png" alt="">
+                                        {{-- <span class="hero_caption" style="font-size:25px;font-weight:900"> TNPSC Mains</span > --}}
+                                        </a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9">

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/frontend/assets/css/slick.css">
     <link rel="stylesheet" href="/frontend/assets/css/nice-select.css">
     <link rel="stylesheet" href="/frontend/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -35,7 +36,8 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="/frontend/assets/img/logo/loder.png" alt="">
+                    <img src="/frontend/assets/img/logo/loder.png" alt=""><br />
+                    <p style="font-size: 10px;" class="">Please Wait</p>
                 </div>
             </div>
         </div>
@@ -52,8 +54,10 @@
                             <div class="col-xl-3 col-lg-3">
                                 <div class="logo">
                                     <a href="index.html"><img style="height:40px;" src="/orange-book.png"
-                                            alt=""> <span class="hero_caption"
-                                            style="font-size:25px;font-weight:900"> TNPSC Mains</span></a>
+                                            alt="">
+                                            {{-- <span class="hero_caption"
+                                            style="font-size:25px;font-weight:900"> TNPSC Mains</span> --}}
+                                        </a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9">
@@ -152,6 +156,7 @@
                                             onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
                                     </div>
                                 </div>
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                             </div>
                             <div class="form-group mt-3">
                                 <button type="submit" class="button button-contactForm boxed-btn">Send</button>
@@ -258,7 +263,27 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="/frontend/assets/js/plugins.js"></script>
     <script src="/frontend/assets/js/main.js"></script>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": true,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        }
+    });
+</script>
 </body>
 
 </html>

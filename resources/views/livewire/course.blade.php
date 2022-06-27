@@ -2,7 +2,7 @@
     <div class="">
         <div class="row">
 
-            <h4 class="fw-bold py-3 mb-4 ">Plan Management&nbsp;&nbsp;<a href="javascript:void(0)"
+            <h4 class="fw-bold py-3 mb-4 ">Course Management&nbsp;&nbsp;<a href="javascript:void(0)"
                     class="btn  rounded-pill btn-icon btn-outline-primary" onclick="clearTextArea()"
                     wire:click="resetdata()" data-bs-toggle="modal" data-bs-target="#coursemodal">
                     <span class=""><i class="fa-solid fa-plus"></i></span>
@@ -69,6 +69,10 @@
 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    Showing {{ $datas->firstItem() }} to {{ $datas->lastItem() }} of {{ $datas->total() }} entries
+                    {{ $datas->withQueryString()->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
     </div>
@@ -451,11 +455,7 @@
         Livewire.on('edit-course', function() {
             $('#coursemodal').modal('show');
         })
-        Livewire.on('test-added', function() {
-            // $('#testmodal').modal('hide');
-            toastr.success('Test Added');
-            // location.reload();
-        })
+      
         Livewire.on('test-updated', function() {
             // $('#testmodal').modal('hide');
             toastr.success('Test Updated');

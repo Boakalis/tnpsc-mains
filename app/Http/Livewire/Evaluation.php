@@ -7,12 +7,13 @@ use App\Models\SubmittedTest;
 use Livewire\Component;
 use Auth;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Evaluation extends Component
 {
     use WithFileUploads;
-
-    public $datas, $evaluators, $evaluator_id = null, $test_id = null, $status = null, $unique = null, $eFile;
+    use WithPagination;
+    public $evaluators, $evaluator_id = null, $test_id = null, $status = null, $unique = null, $eFile;
 
     protected $listeners = [
         'evaluator' => 'evaluator',
@@ -147,12 +148,12 @@ class Evaluation extends Component
     public function render()
     {
         if (Auth::user()->user_type == 1) {
-            $this->datas = SubmittedTest::select('id', 'test_id', 'user_id', 'evaluator_id', 'submited_file', 'created_at', 'status', 'updated_at')->with('user:id,name', 'evaluator:id,name', 'test:id,name,course_id', 'test.course:id,name,exam_id', 'test.course.exam:id,name')->orderBy('id', 'DESC')->get();
+            $datas = SubmittedTest::select('id', 'test_id', 'user_id', 'evaluator_id', 'submited_file', 'created_at', 'status', 'updated_at')->with('user:id,name', 'evaluator:id,name', 'test:id,name,course_id', 'test.course:id,name,exam_id', 'test.course.exam:id,name')->orderBy('id', 'DESC')->paginate(10);
         } else {
-            $this->datas = SubmittedTest::where('evaluator_id', Auth::user()->id)->select('id', 'test_id', 'user_id', 'evaluator_id', 'submited_file', 'created_at', 'status', 'updated_at')->with('user:id,name', 'evaluator:id,name', 'test:id,name,course_id', 'test.course:id,name,exam_id', 'test.course.exam:id,name')->orderBy('id', 'DESC')->get();
+            $datas = SubmittedTest::where('evaluator_id', Auth::user()->id)->select('id', 'test_id', 'user_id', 'evaluator_id', 'submited_file', 'created_at', 'status', 'updated_at')->with('user:id,name', 'evaluator:id,name', 'test:id,name,course_id', 'test.course:id,name,exam_id', 'test.course.exam:id,name')->orderBy('id', 'DESC')->paginate(10);
         }
 
 
-        return view('livewire.evaluation')->extends('layouts.master')->section('content');
+        return view('livewire.evaluation',compact('datas'))->extends('layouts.master')->section('content');
     }
 }

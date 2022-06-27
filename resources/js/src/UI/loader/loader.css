@@ -158,7 +158,7 @@ body {
     height: 150px;
     position: relative;
   }
-  
+
   .spinner div {
     width: 100%;
     height: 100%;
@@ -169,15 +169,15 @@ body {
     border-top-color: #ad6ef5;
     animation: spinnerOne 1.2s linear infinite;
   }
-  
+
   .spinner div:nth-child(2) {
     border: 10px solid transparent;
     border-bottom-color: #ad6ef5;
      animation: spinnerTwo 1.2s linear infinite;
   }
-  
+
   @keyframes spinnerOne {
-    0%{ transform: rotate(0deg); 
+    0%{ transform: rotate(0deg);
         border-width: 10px;
     }
     50% {
@@ -188,11 +188,11 @@ body {
       transform: rotate(360deg);
       border-width: 10px;
     }
-    
+
   }
-  
+
   @keyframes spinnerTwo {
-    0%{ transform: rotate(0deg); 
+    0%{ transform: rotate(0deg);
         border-width: 1px;
     }
     50% {
@@ -204,7 +204,7 @@ body {
       border-width: 1px;
     }
   }
-  
+
   /* Bouncing balls */
   .bounce {
     width: 150px;
@@ -213,26 +213,26 @@ body {
     justify-content: space-around;
     align-items: center;
   }
-  
+
   .bounce div {
     width: 25px;
     height: 25px;
     background: #0077ff;
     border-radius: 50%;
-    animation:bouncing 0.5s 
+    animation:bouncing 0.5s
       cubic-bezier(.19, .57, .3, .98) infinite alternate;
   }
-  
+
   .bounce div:nth-child(2) {
    animation-delay: .1s;
    opacity: .8;
   }
-  
+
   .bounce div:nth-child(3) {
     animation-delay: .2s;
     opacity: .6;
   }
-  
+
   .bounce div:nth-child(4) {
     animation-delay: .3s;
     opacity: .4;
@@ -241,7 +241,7 @@ body {
     animation-delay: .3s;
     opacity: .4;
   }
-  
+
   @keyframes bouncing {
     from{
       transform: translateY(0);
@@ -250,14 +250,14 @@ body {
       transform: translateY(-100px);
     }
   }
-  
+
   .square {
     width: 150px;
     height: 150px;
     position: relative;
     perspective: 200px;
   }
-  
+
   .square div {
     width: 75px;
     height: 75px;
@@ -272,9 +272,9 @@ body {
     right: 0;
     top: 50%;
     transform-origin: top left;
-    
+
   }
-  
+
   @keyframes flip {
     0%{ transform: rotateX(0) rotateY(0);
     opacity: 1;}
@@ -282,8 +282,62 @@ body {
     opacity: .4}
     50%{ transform: rotateX(180deg) rotateY(180deg);
     opacity: .3}
-    75%{ transform: rotateX(180deg) rotateY(0); 
+    75%{ transform: rotateX(180deg) rotateY(0);
     opacity: .2}
     100%{ transform: rotateX(0) rotateY(0);
     opacity: 1}
   }
+
+  .preloader {
+    background-color: #f7f7f7;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    -webkit-transition: .6s;
+    -o-transition: .6s;
+    transition: .6s;
+    margin: 0 auto;
+}
+.preloader .preloader-circle {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    /* border-style: solid; */
+    /* border-width: 1px; */
+    border-top-color: #C86FFF;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    z-index: 10;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 1px 5px 0 rgba(35,181,185,0.15);
+    box-shadow: 0 1px 5px 0 rgba(35,181,185,0.15);
+    background-color: #fff;
+    -webkit-animation: zoom 2000ms infinite ease;
+    animation: zoom 2000ms infinite ease;
+    -webkit-transition: .6s;
+    -o-transition: .6s;
+    transition: .6s;
+}
+.preloader .preloader-img {
+    position: absolute;
+    top: 50%;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-top: 6px;
+    -webkit-transition: .6s;
+    -o-transition: .6s;
+    transition: .6s;
+}

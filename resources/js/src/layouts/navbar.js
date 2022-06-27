@@ -95,6 +95,15 @@ const NavBar = () => {
             <AppBar position="static" style={{ backgroundColor: "white" }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
+                    <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+                        <a
+                            onClick={handleOpenNavMenu}
+                            className="nav-item nav-link px-0 me-xl-4"
+                            href="javascript:void(0)"
+                        >
+                            <i className="bx bx-menu bx-sm"></i>
+                        </a>
+                    </div>
                         <Box sx={{ flexGrow: 1 }} />
                         <Box
                             spacing={2}

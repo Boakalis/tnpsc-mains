@@ -2,13 +2,19 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HelperController;
+use App\Http\Livewire\ChangePassword;
 use App\Http\Livewire\Course;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Enquiry as LivewireEnquiry;
 use App\Http\Livewire\Evaluation;
 use App\Http\Livewire\Evaluator;
 use App\Http\Livewire\Exam;
+use App\Http\Livewire\OrderList;
 use App\Http\Livewire\Test;
+use App\Http\Livewire\UserList;
 use App\Mail\PasswordRecoveryMail;
+use App\Models\Enquiry;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -68,14 +74,31 @@ Route::get('adfasfasdfbasc8yrhisfoasidyfsbnify87trabrcoashga8txf78eiuen78zt78b87
 
 Route::post('office-login',[LoginController::class,'loginAttempt'])->name('attempt.login');
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
 
-    Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('exams',Exam::class)->name('exam');
-    Route::get('courses',Course::class)->name('course');
-    Route::get('tests',Test::class)->name('test');
-    Route::get('evaluation',Evaluation::class)->name('evaluation');
-    Route::get('evaluators',Evaluator::class)->name('evaluator');
+    Route::middleware(['admin'])->group(function () {
+        Route::get('exams',Exam::class)->name('exam');
+        Route::get('courses',Course::class)->name('course');
+        Route::get('evaluators',Evaluator::class)->name('evaluator');
+        Route::get('orders',OrderList::class)->name('orders');
+        Route::get('users',UserList::class)->name('users');
+        Route::get('enquiries',LivewireEnquiry::class)->name('enquiry');
+        Route::get('settings',[HomeController::class,'settings'])->name('settings');
+        Route::post('settings',[HomeController::class,'submitSettings'])->name('settings.post');
+        Route::post('/fileUploadEditor', [HelperController::class, 'fileUploadEditor'])
+        ->name('fileUploadEditor');
+    });
+    Route::middleware(['evaluator'])->group(function () {
+        Route::get('/dashboard', Dashboard::class)->name('dashboard');
+        Route::get('/change-password', ChangePassword::class)->name('change.password');
+        Route::get('tests',Test::class)->name('test');
+        Route::get('evaluation',Evaluation::class)->name('evaluation');
+        Route::get('logout',function() {
+            Auth::logout();
+            return redirect()->route('attempt.login');
+        })->name('custom-logout');
+    });
+
 });
 
 

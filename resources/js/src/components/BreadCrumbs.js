@@ -14,15 +14,15 @@ export default function CustomSeparator(props) {
   const { title } = props;
   const breadcrumbsDatas = useBreadcrumbs();
 
-  
+
   const navigate = useNavigate();
   // function handleClick(event) {
   //   console.info("You clicked a breadcrumb.");
 
   // }
-  useEffect(() => { 
+  useEffect(() => {
     console.log(breadcrumbsDatas);
-    breadcrumbsDatas.map((breadcrumb) => { 
+    breadcrumbsDatas.map((breadcrumb) => {
       console.log(decodeURIComponent(breadcrumb.breadcrumb.props.children));
     });
   });
@@ -38,7 +38,7 @@ export default function CustomSeparator(props) {
             {title}
           </h1>
         </Col>
-        <Col>
+        <Col className="d-xl-block d-none">
           <Stack
             spacing={0}
             direction="row"
@@ -57,8 +57,8 @@ export default function CustomSeparator(props) {
                     className="text-uppercase "
                     to={breadcrumb.match.pathname}
                   >
-                    <span style={{fontSize:'13px'}}>{decodeURIComponent(breadcrumb.breadcrumb.props.children)}</span> 
-                  </NavLink> 
+                    <span style={{fontSize:'13px'}}>{decodeURIComponent(breadcrumb.breadcrumb.props.children)}</span>
+                  </NavLink>
                 );
               })}
             </Breadcrumbs>

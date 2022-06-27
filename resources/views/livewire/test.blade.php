@@ -50,7 +50,8 @@
                                     <td>
                                         <span
                                             class="badge bg-label-{{ $data->status == 1 ? 'primary' : ($data->status == 0 ? 'info' : 'secondary') }}  me-1">{{ $data->status == 1 ? 'Evaluated' : ($data->status == 0 ? 'Submitted' : 'Under Evaluation') }}
-                                        </span></td>
+                                        </span>
+                                    </td>
                                     <td>
                                         {{-- <select name="" id="" class="form-control" onchange="statuschange(event)" data-testId="{{$data->id}}" >
                                             <option value="">Select Status</option>
@@ -58,7 +59,9 @@
                                             <option value="1">Evaluated</option>
                                         </select> --}}
 
-                                        <button class="btn btn-{{@$data->status == 1 ? 'secondary' : (@$data->status == 2 ? 'info' : 'success') }} " {{@$data->status == 1 ? 'disabled' : '' }}
+                                        <button
+                                            class="btn btn-{{ @$data->status == 1 ? 'secondary' : (@$data->status == 2 ? 'info' : 'success') }} "
+                                            {{ @$data->status == 1 ? 'disabled' : '' }}
                                             onclick="openAssignModal({{ @$data->id }})">Assign/Update</button>
                                     </td>
                                 </tr>
@@ -67,12 +70,17 @@
 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    Showing {{ $datas->firstItem() }} to {{ $datas->lastItem() }} of {{ $datas->total() }}
+                    entries
+                    {{ $datas->withQueryString()->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade " id="testmodal" wire:ignore.self data-bs-backdrop="static" tabindex="-1"
-        aria-modal="true" role="dialog">
+    <div class="modal fade " id="testmodal" wire:ignore.self data-bs-backdrop="static" tabindex="-1" aria-modal="true"
+        role="dialog">
         <div class="modal-dialog ">
             <form class="modal-content">
                 <div class="modal-header">
@@ -84,8 +92,9 @@
                         <div class="col-12">
                             <div class="col col-12 mb-3">
                                 <label for="testname" class="form-label">Select Evaluator</label>
-                                <select name="" id="" class="form-control" wire:model="evaluator_id" onchange=evaluatorchange(event) " >
-                                     @if (isset($evaluators) && !empty($evaluators))
+                                <select name="" id="" class="form-control" wire:model="evaluator_id"
+                                    onchange=evaluatorchange(event) " >
+                                      @if (isset($evaluators) && !empty($evaluators))
                                     <option value="">Select Evaluator</option>
                                     @foreach ($evaluators as $evaluator)
                                         <option value="{{ $evaluator->id }}">{{ $evaluator->name }}
@@ -99,8 +108,8 @@
                             </div>
                             <div class="col col-12 mb-3">
                                 <label for="status" class="form-label">Status</label>
-                                <select name="" id="" class="form-control" wire:model="status" onchange="statuschange(event)"
-                                    >
+                                <select name="" id="" class="form-control" wire:model="status"
+                                    onchange="statuschange(event)">
                                     <option value="">Select Status</option>
                                     <option value="2">Assign</option>
                                     {{-- <option value="1">Evaluated</option> --}}

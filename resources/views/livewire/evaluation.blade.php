@@ -69,6 +69,10 @@
 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    Showing {{ $datas->firstItem() }} to {{ $datas->lastItem() }} of {{ $datas->total() }} entries
+                    {{ $datas->withQueryString()->links('pagination::bootstrap-4') }}
+                </div>
             </div>
         </div>
     </div>

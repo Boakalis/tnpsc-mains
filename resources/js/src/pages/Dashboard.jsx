@@ -119,7 +119,7 @@ function Dashboard() {
                             : time < 15
                             ? "Good Afternoon"
                             : "Good Evening"}{" "}
-                          {user.name}! 🎉
+                          {user.name}! 
                         </h5>
                         <h6
                           className="mb-2 text-uppercase "
