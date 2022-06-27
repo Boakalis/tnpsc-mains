@@ -15,6 +15,7 @@ use App\Http\Livewire\Test;
 use App\Http\Livewire\UserList;
 use App\Mail\PasswordRecoveryMail;
 use App\Models\Enquiry;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -52,17 +53,20 @@ Route::get('/contact-us',function(){
     return view('contact');
 })->name('contact');
 Route::get('/about-us',function(){
-    return view('about-us');
+    $data = Setting::where('id',1)->first();
+    return view('about-us',compact('data'));
 })->name('about');
 Route::get('/privacy-policy',function(){
-    return view('privacy-policy');
+    $data = Setting::where('id',1)->first();
+    return view('privacy-policy',compact('data'));
 })->name('privacy');
 Route::get('/password',function(){
     return view('emails.password');
 })->name('password');
 
 Route::get('/terms-and-condition',function(){
-    return view('terms-and-conditions');
+    $data = Setting::where('id',1)->first();
+    return view('terms-and-conditions',compact('data'));
 })->name('terms-condition');
 Route::get('office-login',function(){
     return view('login');

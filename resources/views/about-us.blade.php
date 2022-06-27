@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/frontend/assets/css/slick.css">
     <link rel="stylesheet" href="/frontend/assets/css/nice-select.css">
     <link rel="stylesheet" href="/frontend/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 
@@ -54,7 +55,7 @@
                                 <div class="logo">
                                     <a href="index.html"><img style="height:40px;" src="/orange-book.png"
                                             alt="">
-                                             {{-- <span class="hero_caption"
+                                            {{-- <span class="hero_caption"
                                             style="font-size:25px;font-weight:900"> TNPSC Mains</span> --}}
                                         </a>
                                 </div>
@@ -104,8 +105,8 @@
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript:void(0)">About us</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">About-us</a></li>
                                         </ol>
                                     </nav>
                                     <!-- breadcrumb End -->
@@ -117,9 +118,10 @@
             </div>
         </section>
         <!--?  Contact Area start  -->
-        <section class="contact-section ">
+        <section class="contact-section">
             <div class="container">
-                 THausdias asduiadya i
+                {!!@$data->about!!}
+
             </div>
         </section>
         <!-- Contact Area End -->
@@ -196,7 +198,27 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="/frontend/assets/js/plugins.js"></script>
     <script src="/frontend/assets/js/main.js"></script>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": true,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        }
+    });
+</script>
 </body>
 
 </html>
