@@ -206,18 +206,18 @@ function Content() {
                     <>
                         {datas.purchased == false &&
                             createPortal(
-                                <div className="banner-outer pt-3">
+                                <div className="banner-outer py-3">
                                     <div className="banner-inner responsive-wrapper">
-                                        <h6 className="text-dark">
-                                            {`Get Access to ${datas.exam.name}(${datas.name} Package) @₹${datas.price}/- Only`}
-                                            <button
+                                        <span className="text-dark" style={{fontSize:"13px"}} >
+                                            {`Get Access to ${datas.exam.name}(${datas.name}) @₹${datas.price}/-`}
+                                            <badge
                                                 onClick={startPayment}
                                                 id="btn-sub"
-                                                className=" mx-3 sub-btn btn btn-sm"
+                                                className=" mx-3 p-2 badge sub-btn "
                                             >
                                                 Buy Now
-                                            </button>
-                                        </h6>
+                                            </badge>
+                                        </span>
                                     </div>
                                 </div>,
                                 document.getElementById("price-root")

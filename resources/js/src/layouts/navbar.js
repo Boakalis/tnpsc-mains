@@ -176,7 +176,7 @@ const NavBar = () => {
                                             ></i>
                                         </IconButton>
                                     </Tooltip>
-                                    <Tooltip title="Profile Settings">
+                                    <Tooltip title="Profile Settings " className="d-none  d-xl-block" >
                                         <p
                                             onClick={handleOpenUserMenu}
                                             className="my-0 py-0  text-uppercase"

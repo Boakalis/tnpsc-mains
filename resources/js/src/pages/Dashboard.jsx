@@ -119,7 +119,7 @@ function Dashboard() {
                             : time < 15
                             ? "Good Afternoon"
                             : "Good Evening"}{" "}
-                          {user.name}! 
+                          {user.name}!
                         </h5>
                         <h6
                           className="mb-2 text-uppercase "
@@ -235,7 +235,7 @@ function Dashboard() {
       </div>
     </div> */}
               {/* Total Revenue */}
-              <div className="col-6  mb-4">
+              <div className="col-12 col-lg-6  mb-4">
                 <div className="card">
                   <div className="row row-bordered g-0">
                     <div className="col-12">
@@ -243,9 +243,9 @@ function Dashboard() {
                         Purchased Course
                       </h5>
                       <div id="totalRevenueChart" className="px-2" />
-                      <div className="card-body">
+                      <div className="card-body pt-3">
                         <ul className="p-0 m-0">
-                          {data?.purchase_data?.map((x) => {
+                          {data?.purchase_data.length > 0 ?  (data?.purchase_data?.map((x) => {
                             return (
                               <li className="d-flex mb-4 pb-1">
                                 <div className="avatar flex-shrink-0 me-3">
@@ -285,7 +285,11 @@ function Dashboard() {
                                 </div>
                               </li>
                             );
-                          })}
+                          })) : (
+                              <div className="text-center">
+                                  <span className="">No Purchases Found</span>
+                              </div>
+                          )}
                         </ul>
                         {/* <div className="text-center">
                           <button class="btn btn-primary btn-sm">
@@ -307,7 +311,7 @@ function Dashboard() {
                       <div id="totalRevenueChart" className="px-2" />
                       <div className="card-body">
                         <ul className="p-0 m-0">
-                          {data?.evaluated_reports?.map((x) => {
+                        {data?.evaluated_reports.length > 0 ?  (data?.evaluated_reports?.map((x) => {
                             return (
                               <li className="d-flex mb-4 pb-1">
                                 <div className="avatar flex-shrink-0 me-3">
@@ -383,7 +387,13 @@ function Dashboard() {
                                 </div>
                               </li>
                             );
-                          })}
+                          })):(
+
+                                <div className="text-center">
+                                    <span className="">No Tests Found</span>
+                                </div>
+                            )}
+
                         </ul>
                         {/* <div className="text-center">
                           <button class="btn btn-primary btn-sm">

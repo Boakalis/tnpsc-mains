@@ -236,7 +236,7 @@ function Profile() {
                                         Personal Details
                                     </h4>
                                     <form className="row">
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-fullname"
@@ -281,7 +281,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="row mb-3 col-6">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-email"
@@ -371,7 +371,7 @@ function Profile() {
                                         <h4 className="text-center my-4">
                                             Communication Details
                                         </h4>
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-address1"
@@ -419,7 +419,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>{" "}
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-address2"
@@ -464,7 +464,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>{" "}
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-city"
@@ -509,7 +509,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>{" "}
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-state"
@@ -554,7 +554,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>{" "}
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-landmark"
@@ -599,7 +599,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>{" "}
-                                        <div className="row mb-3 col-6 ">
+                                        <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"
                                                 for="basic-icon-default-pincode"

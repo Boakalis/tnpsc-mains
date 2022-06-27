@@ -20,10 +20,19 @@ import Tooltip from "@mui/material/Tooltip";
 export default function Notification() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [datas, setDatas] = useState([]);
-
+    const [change ,setChange] = useState(false);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    const clearNotification = () => {
+        axios
+            .get("/clear-notifications")
+            .then((resp) => {
+                setChange(true);
+            })
+            .catch((error) => {});
+    }
 
     useEffect(() => {
         axios
@@ -33,7 +42,7 @@ export default function Notification() {
                 setDatas(resp.data.data);
             })
             .catch((error) => {});
-    }, []);
+    }, [change]);
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -87,6 +96,13 @@ export default function Notification() {
                                             />
                                         </ListItem>
                                         <Divider />
+                                        <ListItem className="py-1">
+                                            <ListItemText className="py-1" style={{cursor:"pointer"}}
+                                                sx={{ p: 2 }}
+                                                onClick={clearNotification}
+                                                primary={`Clear All Notfications`}
+                                            />
+                                        </ListItem>
                                     </>
                                 ))}
                             </List>

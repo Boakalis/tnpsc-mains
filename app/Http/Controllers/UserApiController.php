@@ -437,6 +437,23 @@ class UserApiController extends Controller
         }
     }
 
+    public function clearNotifications()
+    {
+        try {
+            $datas = Notification::where([['user_id', auth('api')->user()->id], ['status', 1]])->update([
+                'status'=> 0,
+            ]);
+            return response()->json([
+                'status' => 200,
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'error' => 'An error occured',
+                'message' => $th->getMessage(),
+            ])->setStatusCode(500);
+        }
+    }
+
     public function getCourse()
     {
         $purchaseCourse = Order::where([['user_id', auth('api')->user()->id], ['status', 1]])->pluck('course_id')->toArray();

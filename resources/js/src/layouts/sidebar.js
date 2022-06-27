@@ -126,6 +126,9 @@ const Sidebar = () => {
             }} */}
                     <li className="menu-item  ">
                         <NavLink
+                            onClick={()=>{
+                                window.location.href = "/";
+                            }}
                             to="/"
                             style={({ isActive }) =>
                                 isActive
@@ -146,6 +149,11 @@ const Sidebar = () => {
                     <li className="menu-item ">
                         {user != null ? (
                             <NavLink
+                                onClick={()=>{
+                                    document
+                                    .getElementById("layout")
+                                    .classList.remove("layout-menu-expanded");
+                                }}
                                 to="/my-dashboard"
                                 style={({ isActive }) =>
                                     isActive
@@ -167,6 +175,9 @@ const Sidebar = () => {
                                 href="javascript:void(0)"
                                 onClick={() => {
                                     dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                    document
+                                    .getElementById("layout")
+                                    .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
                                 className=" text-uppercase menu-link"
@@ -180,6 +191,11 @@ const Sidebar = () => {
                     <li className="menu-item ">
                         <NavLink
                             to="/exams"
+                            onClick={()=>{
+                                document
+                                .getElementById("layout")
+                                .classList.remove("layout-menu-expanded");
+                            }}
                             style={({ isActive }) =>
                                 isActive
                                     ? {
@@ -208,6 +224,11 @@ const Sidebar = () => {
                         {user != null ? (
                             <NavLink
                                 to="/profile"
+                                onClick={()=>{
+                                    document
+                                    .getElementById("layout")
+                                    .classList.remove("layout-menu-expanded");
+                                }}
                                 style={({ isActive }) =>
                                     isActive
                                         ? {
@@ -228,6 +249,9 @@ const Sidebar = () => {
                                 href="javascript:void(0)"
                                 onClick={() => {
                                     dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                    document
+                                    .getElementById("layout")
+                                    .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
                                 className=" text-uppercase menu-link"
@@ -240,6 +264,11 @@ const Sidebar = () => {
                     <li className="menu-item ">
                         {user != null ? (
                             <NavLink
+                            onClick={()=>{
+                                document
+                                .getElementById("layout")
+                                .classList.remove("layout-menu-expanded");
+                            }}
                                 to="/my-courses"
                                 style={({ isActive }) =>
                                     isActive
@@ -253,7 +282,7 @@ const Sidebar = () => {
                                 }
                                 className=" text-uppercase menu-link"
                             >
-                                <i class="fa-solid tf-icons fa-circle-book-open menu-icon"></i>
+                                <i class="fa-solid fa-book menu-icon"></i>
                                 {/* <i className="menu-icon tf-icons bx bx-user" /> */}
                                 <div data-i18n="exam">My Courses</div>
                             </NavLink>
@@ -262,11 +291,14 @@ const Sidebar = () => {
                                 href="javascript:void(0)"
                                 onClick={() => {
                                     dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                    document
+                                    .getElementById("layout")
+                                    .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
                                 className=" text-uppercase menu-link"
                             >
-                                <i class="fa-solid tf-icons fa-book menu-icon"></i>
+                                <i class="fa-solid  fa-book menu-icon"></i>
                                 <div data-i18n="exam">My Courses</div>
                             </a>
                         )}
@@ -274,6 +306,11 @@ const Sidebar = () => {
                     <li className="menu-item ">
                         {user != null ? (
                             <NavLink
+                            onClick={()=>{
+                                document
+                                .getElementById("layout")
+                                .classList.remove("layout-menu-expanded");
+                            }}
                                 to="/my-reports"
                                 style={({ isActive }) =>
                                     isActive
@@ -295,6 +332,9 @@ const Sidebar = () => {
                                 href="javascript:void(0)"
                                 onClick={() => {
                                     dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                    document
+                                    .getElementById("layout")
+                                    .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
                                 className=" text-uppercase menu-link"

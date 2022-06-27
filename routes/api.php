@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('log-out', [UserApiController::class, 'logOut'])->name('logOut');
     Route::post('orders', [UserApiController::class, 'orderInitiate'])->name('orderInitiate');
     Route::get('notifications', [UserApiController::class, 'notifications'])->name('notifications');
+    Route::get('clear-notifications', [UserApiController::class, 'clearNotifications'])->name('clear.notifications');
     Route::get('analytics-data', [UserApiController::class, 'analytics'])->name('analytics');
     Route::get('auth', [UserApiController::class, 'auth'])->name('auth');
 });
