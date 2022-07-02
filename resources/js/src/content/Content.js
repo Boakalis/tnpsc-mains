@@ -15,7 +15,7 @@ import style from "./../components/Breadcrumb.module.css";
 import BreadCrumbs from "./../components/BreadCrumbs";
 import { createPortal } from "react-dom";
 import Loader from "./../UI/loader/Loader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import TextLoader from "../UI/loader/TextLoader";
 import Nr from "../UI/loader/NoResult";
@@ -31,7 +31,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Content() {
     const dispatch = useDispatch();
-
+    const user = useSelector((state) => state.authentication.user);
     const slug = useParams();
     const [loading, setLoading] = useState(false);
 
@@ -158,22 +158,18 @@ function Content() {
     const scheduleButton = () => {
         dispatch({ type: "OPEN_PAYMENT_LOADER" });
         axios
-            .get(`/get-schedule/${datas.id}`)
+            .get(`/get-schedule/${datas.id}`,{responseType:'blob'})
             .then((resp) => {
                 dispatch({ type: "CLOSE_PAYMENT_LOADER" });
                 const url = window.URL.createObjectURL(
-                    new Blob([resp.data], { type: "application/octetstream" })
+                    new Blob([resp.data], { type: "application/pdf" })
                 );
                 const link = document.createElement("a");
                 link.href = url;
-                link.setAttribute(
-                    "download",
-                    slugify(datas.exam.name + "-" + datas.name + "-schedule") +
-                        ".pdf"
-                );
+                link.download = slugify(datas.exam.name+"-"+datas.name+"-schedule")+".pdf";
                 link.click();
-                link.remove();
-                setTimeout(() => window.URL.revokeObjectURL(url), 100);
+
+                setTimeout(() => window.URL.revokeObjectURL(url), 2000);
                 dispatch({ type: "CLOSE_PAYMENT_LOADER" });
             })
             .catch((error) => {
@@ -240,7 +236,9 @@ function Content() {
                                             label="Download Schedule"
                                             variant="outlined"
                                             color="success"
-                                            onClick={scheduleButton}
+                                            onClick={ user != null ? scheduleButton : ()=>{
+                                                dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                            }}
                                         />
                                     </span>
                                 </Typography>

@@ -301,7 +301,7 @@ function Dashboard() {
                   </div>
                 </div>
               </div>
-              <div className="col-6  mb-4">
+              <div className="col-12 col-lg-6  mb-4">
                 <div className="card">
                   <div className="row row-bordered g-0">
                     <div className="col-12">

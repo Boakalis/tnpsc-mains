@@ -323,7 +323,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-6 row mb-3">
+                                        <div className="row mb-3  col-lg-6 col-xl-6 col-12">>
                                             <label
                                                 class="form-label"
                                                 for="basic-default-fullname"

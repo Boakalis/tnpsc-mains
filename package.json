@@ -59,6 +59,7 @@
         "@mui/material": "^5.8.5",
         "@react-oauth/google": "^0.2.6",
         "autoprefixer": "10.4.5",
+        "js-file-download": "^0.4.12",
         "react-google-login": "^5.2.2",
         "react-js-pagination": "^3.0.3",
         "react-laravel-paginex": "^2.0.8"
