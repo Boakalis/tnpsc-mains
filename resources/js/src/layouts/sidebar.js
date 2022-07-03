@@ -17,7 +17,12 @@ const Sidebar = () => {
                 className="layout-menu menu-vertical menu bg-menu-theme"
             >
                 <div className="app-brand demo px-1">
-                    <a href="index.html" className="app-brand-link">
+                    <a
+                    href="javascript:void(0)"
+                    onClick={() => {
+                        window.location.href = "/";
+                    }}
+                    className="app-brand-link">
                         <span className="app-brand-logo demo">
                             {/* <svg
                 width={25}

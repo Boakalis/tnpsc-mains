@@ -158,34 +158,29 @@ const Card = (props) => {
         return;
       }
       axios
-        .get("/get-question/" + props.data.id, {
-          responseType: "blob",
-        })
-        .then((resp) => {
+      .get(`/get-question/${props.data.id}`, { responseType: "blob" })
+      .then((resp) => {
           const url = window.URL.createObjectURL(
-            new Blob([resp.data], { type: "application/octetstream" })
+              new Blob([resp.data], { type: "application/pdf" })
           );
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute(
-            "download",
-            slugify(props.data.name + "-question") + ".pdf"
-          );
-          // document.body.appendChild(link);
+          link.download =
+              slugify(props.data.name + "-question") + ".pdf";
           link.click();
-          link.remove();
-          setTimeout(() => window.URL.revokeObjectURL(url), 100);
+
+          setTimeout(() => window.URL.revokeObjectURL(url), 2000);
           targetElement.classList.add("d-none");
-        })
-        .catch((error) => {
+      })
+      .catch((error) => {
           targetElement.classList.add("d-none");
           toastr.error(
-            "Something went wrong.Try again Later or contact support"
+              "Something went wrong.Try again Later or contact support"
           );
           setTimeout(() => {
-            toastr.removeByType("error");
+              toastr.removeByType("error");
           }, 3000);
-        });
+      });
       return;
     }
     axios
@@ -214,18 +209,15 @@ const Card = (props) => {
               responseType: "blob",
             })
             .then((resp) => {
-              const url = window.URL.createObjectURL(
-                new Blob([resp.data], { type: "application/octetstream" })
-              );
-              const link = document.createElement("a");
-              link.href = url;
-              link.setAttribute(
-                "download",
-                slugify(props.data.name + "-question") + ".pdf"
-              );
-              // document.body.appendChild(link);
-              link.click();
-              link.remove();
+                const url = window.URL.createObjectURL(
+                    new Blob([resp.data], { type: "application/pdf" })
+                );
+                const link = document.createElement("a");
+                link.href = url;
+                link.download =
+                    slugify(props.data.name + "-question") + ".pdf";
+                link.click();
+
               setTimeout(() => window.URL.revokeObjectURL(url), 100);
               targetElement.classList.add("d-none");
             })
@@ -282,7 +274,7 @@ const Card = (props) => {
           targetElement.classList.add("d-none");
           startPayment(id);
         } else {
-          if (props.data.unlock_time != null) {
+          if (props.data.status == 2) {
             toastr.info(
               "Test Not yet unlocked",
               "Kindly check the schedule provided for more details"
@@ -315,21 +307,16 @@ const Card = (props) => {
         return;
       }
       axios
-      .get(`/get-answer/${id}`)
+      .get(`/get-answer/${id}`,{responseType:'blob'})
       .then((resp) => {
         console.log(resp);
         const url = window.URL.createObjectURL(
-          new Blob([resp.data], { type: "application/octetstream" })
+          new Blob([resp.data], { type: "application/pdf" })
         );
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute(
-          "download",
-          slugify(props.data.name + "-evaluated") + ".pdf"
-        );
-        // document.body.appendChild(link);
+        link.download = slugify(props.data.name+"-evaluated")+".pdf";
         link.click();
-        link.remove();
         setTimeout(() => window.URL.revokeObjectURL(url), 100);
         targetElement.classList.add("d-none");
       })
@@ -365,21 +352,16 @@ const Card = (props) => {
           startPayment(id);
         } else {
           axios
-            .get(`/get-answer/${id}`)
+            .get(`/get-answer/${id}`,{responseType:'blob'})
             .then((resp) => {
               console.log(resp);
               const url = window.URL.createObjectURL(
-                new Blob([resp.data], { type: "application/octetstream" })
+                new Blob([resp.data], { type: "application/pdf" })
               );
               const link = document.createElement("a");
               link.href = url;
-              link.setAttribute(
-                "download",
-                slugify(props.data.name + "-evaluated") + ".pdf"
-              );
-              // document.body.appendChild(link);
+              link.download = slugify(props.data.name+"-evaluated")+".pdf";
               link.click();
-              link.remove();
               setTimeout(() => window.URL.revokeObjectURL(url), 100);
               targetElement.classList.add("d-none");
             })

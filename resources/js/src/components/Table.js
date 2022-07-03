@@ -53,14 +53,13 @@ export default function DataTable() {
       .then((resp) => {
         console.log(resp);
         const url = window.URL.createObjectURL(
-          new Blob([resp.data], { type: "application/octetstream" })
+            new Blob([resp.data], { type: "application/pdf" })
         );
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", slugify(name + "-evaluated") + ".pdf");
-        // document.body.appendChild(link);
+        link.download =
+            slugify(name + "-evaluated") + ".pdf";
         link.click();
-        link.remove();
         setTimeout(() => window.URL.revokeObjectURL(url), 100);
         targetElement.classList.add("d-none");
       })

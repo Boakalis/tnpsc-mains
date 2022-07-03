@@ -2,7 +2,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{route('home')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <img style="height: 50px;" src="/orange-book.png" alt="">
             </span>
@@ -99,13 +99,13 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="layouts-without-menu.html" class="menu-link">
+                        <a href="{{route('orders')}}" class="menu-link">
                             <i class="fa-solid fa-indian-rupee-sign rounded menu-icon"></i>
                             <div data-i18n="Without menu">Manage Orders</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="layouts-without-navbar.html" class="menu-link">
+                        <a href="{{route('users')}}" class="menu-link">
                             <i class="fa-solid fa-user rounded menu-icon"></i>
                             <div data-i18n="Without navbar">Manage Users</div>
                         </a>
