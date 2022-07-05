@@ -37,7 +37,6 @@
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
                     <img src="/frontend/assets/img/logo/loder.png" alt=""><br />
-                    <p style="font-size: 10px;" class="">Please Wait</p>
                 </div>
             </div>
         </div>

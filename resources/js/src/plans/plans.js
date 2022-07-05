@@ -91,7 +91,7 @@ function PackageComponent() {
                       {data.description
                         ? data.description.map((benefit, index) => (
                             <li className="pricing-feature" key={index}>
-                              {benefit}
+                              <i class="fa-solid text-success fa-check"></i>&nbsp;{benefit}
                             </li>
                           ))
                         : ""}

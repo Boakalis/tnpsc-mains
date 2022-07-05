@@ -440,15 +440,15 @@ const Card = (props) => {
         data-tilt-max-glare="0.8"
       >
         <div className="ribbon ">
-          <span className={typeClass}>
+          <span style={{fontSize:'12px',fontWeight:600}} className={typeClass}>
             {" "}
-            {props.data.type == 1 ? "Premium" : "Free"}
+            {props.data.type == 1 ? "PAID" : "FREE"}
           </span>
         </div>
         <div className="titleInfo">
           <div className="" style={{ width: "100%" }}>
             <div className="level">
-              <h3 className="text-uppercase">{props.data.name}</h3>
+              <h6 style={{fontWeight:600}} className="text-uppercase mb-0">{props.data.name}</h6>
               <p></p>
             </div>
 

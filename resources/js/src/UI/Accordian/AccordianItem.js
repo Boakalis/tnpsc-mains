@@ -10,7 +10,7 @@ const AccordianItem = (props) => {
   return (
     <div>
       <Accordion.Item  eventKey="0">
-        <Accordion.Header> <h5 style={{fontWeight:600}} className=" text-uppercase text-center">Week {props.index + 1}  </h5> </Accordion.Header>
+        <Accordion.Header> <h6 style={{fontWeight:600}} className=" text-uppercase mb-0 my-1 text-center">Week {props.index + 1}  </h6> </Accordion.Header>
         <AccordianContent>
           <Row md={3} sm={1} lg={3} xl={3} xs={1} xxl={3}>
             {props.data &&
