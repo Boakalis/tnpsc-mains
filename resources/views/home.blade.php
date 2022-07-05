@@ -52,8 +52,8 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3">
                                 <div class="logo">
-                                    <a href="{{route('home')}}"><img style="height:40px;" src="/orange-book.png" alt="">
-                                        {{-- <span class="hero_caption" style="font-size:25px;font-weight:900"> TNPSC Mains</span > --}}
+                                    {{-- <span class="hero_caption" style="font-size:25px;font-weight:900"> TNPSC Mains</span > --}}
+                                        <a href="{{route('home')}}"><img style="height:40px;" src="/orange-book.png" alt="">
                                         </a>
                                 </div>
                             </div>

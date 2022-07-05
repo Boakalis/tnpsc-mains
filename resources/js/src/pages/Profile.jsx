@@ -232,9 +232,9 @@ function Profile() {
                         <div className=" col-12">
                             <div className="card mb-4">
                                 <div className="card-body">
-                                    <h4 className="text-center my-3">
+                                    {/* <h4 className="text-center my-3">
                                         Personal Details
-                                    </h4>
+                                    </h4> */}
                                     <form className="row">
                                         <div className="row mb-3 col-lg-6 col-xl-6 col-12 ">
                                             <label
@@ -323,7 +323,7 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="row mb-3  col-lg-6 col-xl-6 col-12">>
+                                        <div className="row mb-3  col-lg-6 col-xl-6 col-12">
                                             <label
                                                 class="form-label"
                                                 for="basic-default-fullname"
@@ -368,9 +368,9 @@ function Profile() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4 className="text-center my-4">
+                                        {/* <h4 className="text-center my-4">
                                             Communication Details
-                                        </h4>
+                                        </h4> */}
                                         <div className="row mb-3 col-6 col-lg-6 col-xl-6 col-12 ">
                                             <label
                                                 class="form-label"

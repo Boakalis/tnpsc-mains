@@ -167,14 +167,14 @@
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
-                                <h3>Buttonwood, California.</h3>
-                                <p>Rosemead, CA 91770</p>
+                                <h3>TNPSC leaders mains academy,</h3>
+                                <p>Thirumangalam, Chennai 600101</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                             <div class="media-body">
-                                <h3>+1 253 565 2365</h3>
+                                <h3>+91 9514499379</h3>
                                 <p>Mon to Fri 9am to 6pm</p>
                             </div>
                         </div>

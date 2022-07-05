@@ -145,7 +145,7 @@ const Sidebar = () => {
                                       }
                                     : { color: "white" }
                             }
-                            className=" text-uppercase menu-link"
+                            className="  menu-link"
                         >
                             <i className="menu-icon tf-icons bx bxs-home" />
                             <div data-i18n="home">Home</div>
@@ -170,7 +170,7 @@ const Sidebar = () => {
                                           }
                                         : { color: "white" }
                                 }
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i className="menu-icon tf-icons bx bxs-category" />
                                 <div data-i18n="dashboard">Dashboard</div>
@@ -185,7 +185,7 @@ const Sidebar = () => {
                                     .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i className="menu-icon tf-icons bx bxs-category" />
                                 <div data-i18n="dashboard">Dashboard</div>
@@ -211,7 +211,7 @@ const Sidebar = () => {
                                       }
                                     : { color: "white" }
                             }
-                            className=" text-uppercase menu-link"
+                            className="  menu-link"
                         >
                             <i className="menu-icon tf-icons bx bx-library" />
                             <div data-i18n="exam">Exam</div>
@@ -220,7 +220,7 @@ const Sidebar = () => {
                     <li class="menu-item ">
                         <a
                             href="javascript:void(0)"
-                            className=" text-uppercase menu-link"
+                            className="  menu-link"
                         >
                             <div data-i18n="dashboard">STUDENT CORNER</div>
                         </a>
@@ -244,7 +244,7 @@ const Sidebar = () => {
                                           }
                                         : { color: "white" }
                                 }
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i className="menu-icon tf-icons bx bx-user" />
                                 <div data-i18n="exam">My Profile</div>
@@ -259,7 +259,7 @@ const Sidebar = () => {
                                     .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i className="menu-icon tf-icons bx bx-user" />
                                 <div data-i18n="exam">My Profile</div>
@@ -285,7 +285,7 @@ const Sidebar = () => {
                                           }
                                         : { color: "white" }
                                 }
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i class="fa-solid fa-book menu-icon"></i>
                                 {/* <i className="menu-icon tf-icons bx bx-user" /> */}
@@ -301,7 +301,7 @@ const Sidebar = () => {
                                     .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i class="fa-solid  fa-book menu-icon"></i>
                                 <div data-i18n="exam">My Courses</div>
@@ -327,7 +327,7 @@ const Sidebar = () => {
                                           }
                                         : { color: "white" }
                                 }
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i class="fa-solid tf-icons fa-chart-simple menu-icon"></i>
                                 <div data-i18n="exam">Evaluation Report</div>
@@ -342,7 +342,7 @@ const Sidebar = () => {
                                     .classList.remove("layout-menu-expanded");
                                 }}
                                 style={{ color: "white" }}
-                                className=" text-uppercase menu-link"
+                                className="  menu-link"
                             >
                                 <i class="fa-solid tf-icons fa-chart-simple menu-icon"></i>
                                 <div data-i18n="exam">Evaluation Report</div>
@@ -350,7 +350,7 @@ const Sidebar = () => {
                         )}
                     </li>
                     {/* <li class="menu-item ">
-            <a href="javascript:void(0)" className=" text-uppercase menu-link">
+            <a href="javascript:void(0)" className="  menu-link">
               <div data-i18n="dashboard">Miscellaneous CORNER</div>
             </a>
           </li> */}

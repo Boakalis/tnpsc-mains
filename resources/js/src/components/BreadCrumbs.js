@@ -32,8 +32,8 @@ export default function CustomSeparator(props) {
             <Row>
                 <Col>
                     <h1
-                        style={{ fontSize: "25px", fontWeight: 600 }}
-                        className="text-uppercase"
+                        style={{ fontSize: "20px", fontWeight: 600 }}
+                        className="text-capitalize"
                     >
                         {title}
                     </h1>
@@ -59,7 +59,7 @@ export default function CustomSeparator(props) {
                                                     window.location.href = "/";
                                                 }}
                                                 key={index}
-                                                className="text-uppercase "
+                                                className="text-capitalize"
                                                 to={breadcrumb.match.pathname}
                                             >
                                                 <span style={{ fontSize: "13px" }}>
@@ -73,7 +73,7 @@ export default function CustomSeparator(props) {
                                             <NavLink
                                                 exact
                                                 key={index}
-                                                className="text-uppercase "
+                                                className="text-capitalize "
                                                 to={breadcrumb.match.pathname}
                                             >
                                                 <span style={{ fontSize: "13px" }}>
