@@ -18,14 +18,13 @@ export default function CustomSeparator(props) {
     //   console.info("You clicked a breadcrumb.");
 
     // }
-    useEffect(() => {
-        console.log(breadcrumbsDatas);
-        breadcrumbsDatas.map((breadcrumb) => {
-            console.log(
-                decodeURIComponent(breadcrumb.breadcrumb.props.children)
-            );
-        });
-    });
+    // useEffect(() => {
+    //     breadcrumbsDatas.map((breadcrumb) => {
+    //         console.log(
+    //             decodeURIComponent(breadcrumb.breadcrumb.props.children)
+    //         );
+    //     });
+    // });
 
     return (
         <>

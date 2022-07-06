@@ -36,9 +36,7 @@ function Profile() {
     const stateBlock = useRef();
     const landmarkBlock = useRef();
     const pincodeBlock = useRef();
-    useEffect(() => {
-        console.log(userData);
-    });
+
 
     const validation = (event) => {
         event.preventDefault();
@@ -187,8 +185,6 @@ function Profile() {
                 }, 5000);
             })
             .catch((error) => {
-                console.log(error)
-                console.log(error.response.data.message)
                 if (error.response.data.error == "MAIL_ERROR") {
                     toastr.error(
                         "Please provide valid data"

@@ -24,14 +24,11 @@ function PackageComponent() {
     axios
       .get(`get-plans/${slug}`)
       .then((resp) => {
-        console.log(2);
-        console.log(resp.data.data);
-        console.log(2);
         setData(resp.data.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+
       });
     return () => {};
   }, []);

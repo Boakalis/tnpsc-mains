@@ -40,12 +40,10 @@ function Content() {
         axios
             .get(`get-courses/${slug.plan}/${slug.slug}`)
             .then((resp) => {
-                console.log(resp.data.data);
                 setData(resp.data.data);
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error);
                 setLoading(false);
             });
         return () => {};
@@ -94,11 +92,11 @@ function Content() {
             });
 
         const options = {
-            key: "rzp_test_UW6U9n7RwB0kfE", // Enter the Key ID generated from the Dashboard
+            key: "rzp_live_aCE6nRrod3SJEV", // Enter the Key ID generated from the Dashboard
             amount: amount,
             currency: "INR",
-            name: "Soumya Corp.",
-            description: "Test Transaction",
+            name: "TNPSC Mains",
+            description: "",
             image: null,
             order_id: order_id,
             modal: {
@@ -107,7 +105,6 @@ function Content() {
                 },
             },
             handler: async function (response) {
-                console.log(response);
                 const data = {
                     orderCreationId: order_id,
                     razorpayPaymentId: response.razorpay_payment_id,
@@ -138,12 +135,12 @@ function Content() {
                 dispatch({ type: "CLOSE_PAYMENT_LOADER" });
             },
             prefill: {
-                name: "Soumya Dey",
-                email: "SoumyaDey@example.com",
-                contact: "9999999999",
+                name: user.name,
+                email: user.email,
+                contact: user.phone,
             },
             notes: {
-                address: "Soumya Dey Corporate Office",
+                address: "TNPSC Mains Office",
             },
             theme: {
                 color: "#61dafb",
@@ -207,7 +204,9 @@ function Content() {
                                         <span className="text-dark" style={{fontSize:"13px"}} >
                                             {`Get Access to ${datas.exam.name}(${datas.name}) @₹${datas.price}/-`}
                                             <badge
-                                                onClick={startPayment}
+                                                onClick={ user != null ? startPayment : ()=>{
+                                                    dispatch({ type: "OPEN_LOGIN_MODAL" });
+                                                }}
                                                 id="btn-sub"
                                                 className=" mx-3 p-2 badge sub-btn "
                                             >

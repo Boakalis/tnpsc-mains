@@ -16,7 +16,6 @@ let data =[];
       .request(options)
       .then(function(response) {
         data = response.data
-        console.log(data)
         runDbSave();
       })
       .catch(function(error) {
@@ -28,10 +27,9 @@ let data =[];
     axios
       .post("/api-to-get-motivation-and-save-in-db", data)
       .then((resp) => {
-        console.log("ok");
       })
       .catch((error) => {
-        console.log(error);
+
       });
   }
   return <div>Quotes</div>;

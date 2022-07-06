@@ -34,11 +34,11 @@ const ForgetPassword = React.forwardRef((props, ref) => {
         setOTP(false);
     };
 
-    useEffect(()=>{
-        console.log(otpInput)
-        console.log(email)
-        console.log(passwordInput)
-    })
+    // useEffect(()=>{
+    //     console.log(otpInput)
+    //     console.log(email)
+    //     console.log(passwordInput)
+    // })
     const PasswordChange = () => {
         if (otpInputRef.current.value == "") {
             otpInputRef.current.focus();

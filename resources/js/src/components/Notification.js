@@ -38,7 +38,6 @@ export default function Notification() {
         axios
             .get("/notifications")
             .then((resp) => {
-                console.log(resp.data);
                 setDatas(resp.data.data);
             })
             .catch((error) => {});

@@ -22,7 +22,6 @@ CardComponent.propTypes = {
 };
 
 export default function CardComponent({ data }) {
-  {console.log(data)}
   return (
     <Box sx={{ minWidth: 275 }}>
       <CardActionArea component={NavLink} to={ data.course ==1 ? `/exams/${data.slug}/${slugify(data.course_purchase)}` : `/exams/${data.slug}` }>
@@ -34,7 +33,7 @@ export default function CardComponent({ data }) {
             borderRadius: "15px",
             width: "300px",
             height: "160px",
-          }} 
+          }}
         >
           <CardContent>
             <Typography variant="h5" component="div">

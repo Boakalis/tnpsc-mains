@@ -430,7 +430,6 @@
         }
 
         function testtype(e) {
-            console.log(e.target.value)
             Livewire.emit('testtype', e.target.value);
         }
 

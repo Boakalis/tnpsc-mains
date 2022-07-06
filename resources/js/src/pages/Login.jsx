@@ -36,11 +36,11 @@ const Login = React.forwardRef((props, ref) => {
     };
 
     const handleGoogleLogin = (googleData) => {
-        console.log(googleData);
+        // console.log(googleData);
     };
 
     const handleGoogleLoginFailure = async (googleData) => {
-        console.log(googleData);
+        // console.log(googleData);
     };
 
     const Login = () => {
@@ -129,16 +129,12 @@ const Login = React.forwardRef((props, ref) => {
                                 <p className="modal-desc"></p>
                                 <GoogleLogin
                                     onSuccess={(credentialResponse) => {
-                                        console.log(credentialResponse);
                                         axios
                                             .get(
                                                 `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${credentialResponse.credential}
                                         `
                                             )
                                             .then((resp) => {
-                                                console.log(1);
-                                                console.log(resp.data.email);
-                                                console.log(1);
                                                 axios
                                                     .post("/google-login", {
                                                         email: resp.data.email,
@@ -184,7 +180,6 @@ const Login = React.forwardRef((props, ref) => {
                                                     });
                                             })
                                             .catch((error) => {
-                                                console.log(error);
                                                 toastr.error(
                                                     "Something went wrong",
                                                     "Please try again later or contact support"

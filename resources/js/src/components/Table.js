@@ -21,26 +21,22 @@ export default function DataTable() {
     axios
       .get(`/get-reports?page=${data.page}`)
       .then((resp) => {
-        console.log(resp);
         setState(resp.data);
         setReport(resp.data.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
       });
   };
   useEffect(() => {
     axios
       .get(`/get-reports?page=1`)
       .then((resp) => {
-        console.log(resp);
         setState(resp.data);
         setReport(resp.data.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
       });
   }, []);
 
@@ -51,7 +47,6 @@ export default function DataTable() {
     axios
       .get(`/get-answer/${id}`)
       .then((resp) => {
-        console.log(resp);
         const url = window.URL.createObjectURL(
             new Blob([resp.data], { type: "application/pdf" })
         );

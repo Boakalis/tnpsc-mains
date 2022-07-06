@@ -78,7 +78,6 @@
   <script src="/frontend/assets/js/dashboards-analytics.js"></script>
   <script>
     $('#toggleButton').on('click', function () {
-      console.log('i am working')
       $('#layout').removeClass('layout-menu-expanded')
     })
   </script>

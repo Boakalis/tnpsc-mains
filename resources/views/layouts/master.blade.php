@@ -190,7 +190,6 @@
             }
 
             function deleteData(url, id) {
-                console.log(url + ',' + id);
                 Swal.fire({
                     title: "Are you sure want to delete?",
                     // text: "Action is irreversible. Do you want to proceed?",

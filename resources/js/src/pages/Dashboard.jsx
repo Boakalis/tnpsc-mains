@@ -35,10 +35,9 @@ function Dashboard() {
       .then((resp) => {
         setData(resp.data);
         setPageLoading(false);
-        console.log(resp.data);
       })
       .catch((error) => {
-        console.log(error);
+
       });
   };
 
@@ -47,8 +46,6 @@ function Dashboard() {
   }, []);
 
   const navigateFunction = (examSlug, courseSlug) => {
-    console.log(examSlug, courseSlug);
-
     navigate(`/exams/${examSlug}/${courseSlug}`);
   };
 
@@ -59,7 +56,6 @@ function Dashboard() {
     axios
       .get(`/get-answer/${id}`,{responseType:'blob'})
       .then((resp) => {
-        console.log(resp);
         const url = window.URL.createObjectURL(
           new Blob([resp.data], { type: "application/pdf" })
         );
